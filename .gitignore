@@ -1,0 +1,36 @@
+# logs
+/logs
+/*.log
+/npm-debug.log*
+/yarn-debug.log*
+/yarn-error.log*
+/pnpm-debug.log*
+/lerna-debug.log*
+
+# Editor directories and files
+/.idea
+/.DS_Store
+/*.suo
+/*.ntvs*
+/*.njsproj
+/*.sln
+/*.sw?
+/*.local
+
+# build
+/dist
+
+# package managers
+/node_modules
+/.yarn
+/yarn.lock
+/.pnp
+/.pnp.js
+
+# snyk vscode extension
+/.dccache
+/.dcignore
+/.iac-data
+
+# auto-generated files
+/eslint-typegen.d.ts

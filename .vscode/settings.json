@@ -1,0 +1,39 @@
+{
+  "dotenv.enableAutocloaking": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.detectIndentation": false,
+  "editor.formatOnSave": true,
+  "editor.insertSpaces": true,
+  "editor.tabSize": 2,
+  "eslint.codeActionsOnSave.rules": [
+    "@typescript-eslint/consistent-type-imports",
+    "@typescript-eslint/no-import-type-side-effects",
+    "perfectionist/*",
+    "import-x/no-duplicates",
+    "import-x/first",
+    "jsonc/sort-keys"
+  ],
+  "eslint.rules.customizations": [
+    {
+      "rule": "*",
+      "severity": "warn"
+    }
+  ],
+  "eslint.validate": ["javascript", "javascriptreact", "json", "jsonc", "yaml"],
+  "files.encoding": "utf8",
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "git.autofetch": true,
+  "gitPrefix.pattern": ".*/",
+  "gitPrefix.replacement": "",
+  "javascript.format.enable": false,
+  "javascript.preferences.quoteStyle": "single",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "typescript.format.enable": false,
+  "typescript.preferences.preferTypeOnlyAutoImports": true,
+  "typescript.preferences.quoteStyle": "single",
+  "typescript.tsdk": "./node_modules/typescript/lib"
+}

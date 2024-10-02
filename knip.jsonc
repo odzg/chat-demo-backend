@@ -1,0 +1,10 @@
+{
+  "$schema": "https://unpkg.com/knip@5/schema.json",
+  "entry": [
+    ".dependency-cruiser.js" // ".dependency-cruiser.js" is the config file for `dependency-cruiser`
+  ],
+  "ignoreDependencies": [
+    "@types/ws", // Required as `@fastify/websocket` depends on `ws`
+    "eslint-import-resolver-typescript" // Used implicitly by `eslint-plugin-import-x`
+  ]
+}
