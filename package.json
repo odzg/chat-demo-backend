@@ -32,7 +32,7 @@
     "eslint-plugin-security": "3.0.1",
     "eslint-plugin-yml": "1.14.0",
     "eslint-typegen": "0.3.2",
-    "knip": "5.33.2",
+    "knip": "5.33.3",
     "prettier": "3.3.3",
     "rimraf": "6.0.1",
     "syncpack": "13.0.0",
