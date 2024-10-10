@@ -25,8 +25,11 @@ const JS_TS_EXTENSION_GLOBS = [JS_EXTENSIONS_GLOB, TS_EXTENSIONS_GLOB];
 export default typegen([
   {
     ignores: [
+      /* Specific dot-files/dot-directories which should not be auto-ignored */
       '!.dependency-cruiser.js',
       '!.vscode',
+
+      /* Auto-generated files/directories */
       'dist',
       'eslint-typegen.d.ts',
       'pnpm-lock.yaml',
