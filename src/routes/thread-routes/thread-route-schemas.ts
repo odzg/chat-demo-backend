@@ -3,19 +3,16 @@ import { z } from 'zod';
 import { Thread, ThreadMessage, ThreadUser } from '@/schemas/thread-schemas.js';
 import { User } from '@/schemas/user-schemas.js';
 
-export const GetThreadsResponse = z.array(
-  Thread.and(
-    z.object({
-      threadUsers: z.array(
-        ThreadUser.and(
-          z.object({
-            user: User,
-          }),
-        ),
-      ),
-    }),
-  ),
-);
+export const GetThreadsResponse = Thread.and(
+  z.object({
+    lastMessage: ThreadMessage.nullable(),
+    threadUsers: ThreadUser.and(
+      z.object({
+        user: User,
+      }),
+    ).array(),
+  }),
+).array();
 export const GetThreadsErrorResponse = z.object({
   error: z.string(),
 });
@@ -58,13 +55,11 @@ export const CreateThreadMessageResponse = ThreadMessage;
 export const GetThreadUsersRequestParams = z.object({
   threadId: z.string(),
 });
-export const GetThreadUsersResponse = z.array(
-  ThreadUser.and(
-    z.object({
-      user: User,
-    }),
-  ),
-);
+export const GetThreadUsersResponse = ThreadUser.and(
+  z.object({
+    user: User,
+  }),
+).array();
 export const GetThreadUsersErrorResponse = z.object({
   error: z.string(),
 });

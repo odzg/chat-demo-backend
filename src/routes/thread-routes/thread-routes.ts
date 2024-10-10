@@ -100,12 +100,18 @@ export const threadRoutes: FastifyPluginCallback = (fastify, _opts, done) => {
       return reply.send(
         threads.map((thread) => ({
           ...thread,
-          threadUsers: db.threadUsers.map((threadUser) => ({
-            ...threadUser,
-            user: User.parse(
-              db.users.find(({ id }) => id === threadUser.userId),
-            ),
-          })),
+          lastMessage:
+            db.threadMessages.findLast(
+              ({ threadId }) => threadId === thread.id,
+            ) ?? null,
+          threadUsers: db.threadUsers
+            .filter(({ threadId }) => threadId === thread.id)
+            .map((threadUser) => ({
+              ...threadUser,
+              user: User.parse(
+                db.users.find(({ id }) => id === threadUser.userId),
+              ),
+            })),
         })),
       );
     },
