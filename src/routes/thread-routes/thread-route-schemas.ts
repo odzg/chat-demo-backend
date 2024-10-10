@@ -43,7 +43,6 @@ export const GetThreadMessageErrorResponse = z.object({
 });
 
 export const CreateThreadMessageRequestParams = z.object({
-  messageId: z.string(),
   threadId: z.string(),
 });
 export const CreateThreadMessageRequestBody = ThreadMessage.pick({

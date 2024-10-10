@@ -23,7 +23,7 @@ const dbInitialData: DbSchema = {
       id: 1,
       threadId: 1,
       updatedAt: currentDate,
-      userId: 1,
+      userId: 1, // John Doe
     },
     {
       content: "How's it going?",
@@ -32,79 +32,97 @@ const dbInitialData: DbSchema = {
       id: 2,
       threadId: 1,
       updatedAt: currentDate,
-      userId: 2,
+      userId: 2, // Jane Smith
+    },
+    {
+      content: "I'm doing well, thanks for asking!",
+      createdAt: currentDate,
+      deletedAt: null,
+      id: 3,
+      threadId: 1,
+      updatedAt: currentDate,
+      userId: 1, // John Doe
     },
     {
       content: 'This is an interesting thread.',
       createdAt: currentDate,
       deletedAt: null,
-      id: 3,
+      id: 4,
       threadId: 2,
       updatedAt: currentDate,
-      userId: 3,
+      userId: 3, // Alice Johnson
     },
     {
       content: "Let's discuss further.",
       createdAt: currentDate,
       deletedAt: null,
-      id: 4,
+      id: 5,
       threadId: 2,
       updatedAt: currentDate,
-      userId: 2,
+      userId: 2, // Jane Smith
+    },
+    {
+      content: 'I think we should add more examples to clarify.',
+      createdAt: currentDate,
+      deletedAt: null,
+      id: 6,
+      threadId: 2,
+      updatedAt: currentDate,
+      userId: 3, // Alice Johnson
     },
     {
       content: "I'll create a new thread for this topic.",
       createdAt: currentDate,
       deletedAt: null,
-      id: 5,
+      id: 7,
       threadId: 3,
       updatedAt: currentDate,
-      userId: 4,
+      userId: 4, // Bob Lee
     },
     {
       content: 'Good idea!',
       createdAt: currentDate,
       deletedAt: null,
-      id: 6,
+      id: 8,
       threadId: 3,
       updatedAt: currentDate,
-      userId: 5,
+      userId: 1, // John Doe
     },
     {
       content: 'John, can you check this out?',
       createdAt: currentDate,
       deletedAt: null,
-      id: 7,
+      id: 9,
       threadId: 4,
       updatedAt: currentDate,
-      userId: 2,
+      userId: 2, // Jane Smith
     },
     {
       content: 'Sure, Jane. I’ll review it now.',
       createdAt: currentDate,
       deletedAt: null,
-      id: 8,
+      id: 10,
       threadId: 4,
       updatedAt: currentDate,
-      userId: 1,
+      userId: 5, // Charlie Brown
     },
     {
       content: 'This new feature looks promising.',
       createdAt: currentDate,
       deletedAt: null,
-      id: 9,
+      id: 11,
       threadId: 5,
       updatedAt: currentDate,
-      userId: 1,
+      userId: 1, // John Doe
     },
     {
       content: 'Agreed. Let’s proceed with it.',
       createdAt: currentDate,
       deletedAt: null,
-      id: 10,
+      id: 12,
       threadId: 5,
       updatedAt: currentDate,
-      userId: 2,
+      userId: 3, // Alice Johnson
     },
   ],
   threads: [
@@ -146,7 +164,7 @@ const dbInitialData: DbSchema = {
       id: 1,
       threadId: 1,
       updatedAt: currentDate,
-      userId: 1,
+      userId: 1, // John Doe
       viewedThreadLastAt: currentDate,
     },
     {
@@ -155,7 +173,7 @@ const dbInitialData: DbSchema = {
       id: 2,
       threadId: 1,
       updatedAt: currentDate,
-      userId: 2,
+      userId: 2, // Jane Smith
       viewedThreadLastAt: currentDate,
     },
     {
@@ -164,7 +182,7 @@ const dbInitialData: DbSchema = {
       id: 3,
       threadId: 2,
       updatedAt: currentDate,
-      userId: 3,
+      userId: 3, // Alice Johnson
       viewedThreadLastAt: currentDate,
     },
     {
@@ -173,7 +191,7 @@ const dbInitialData: DbSchema = {
       id: 4,
       threadId: 2,
       updatedAt: currentDate,
-      userId: 2,
+      userId: 2, // Jane Smith
       viewedThreadLastAt: currentDate,
     },
     {
@@ -182,7 +200,7 @@ const dbInitialData: DbSchema = {
       id: 5,
       threadId: 3,
       updatedAt: currentDate,
-      userId: 4,
+      userId: 4, // Bob Lee
       viewedThreadLastAt: currentDate,
     },
     {
@@ -191,7 +209,7 @@ const dbInitialData: DbSchema = {
       id: 6,
       threadId: 3,
       updatedAt: currentDate,
-      userId: 5,
+      userId: 1, // John Doe
       viewedThreadLastAt: currentDate,
     },
     {
@@ -200,7 +218,7 @@ const dbInitialData: DbSchema = {
       id: 7,
       threadId: 4,
       updatedAt: currentDate,
-      userId: 1,
+      userId: 2, // Jane Smith
       viewedThreadLastAt: currentDate,
     },
     {
@@ -209,7 +227,7 @@ const dbInitialData: DbSchema = {
       id: 8,
       threadId: 4,
       updatedAt: currentDate,
-      userId: 2,
+      userId: 5, // Charlie Brown
       viewedThreadLastAt: currentDate,
     },
     {
@@ -218,7 +236,7 @@ const dbInitialData: DbSchema = {
       id: 9,
       threadId: 5,
       updatedAt: currentDate,
-      userId: 1,
+      userId: 1, // John Doe
       viewedThreadLastAt: currentDate,
     },
     {
@@ -227,7 +245,7 @@ const dbInitialData: DbSchema = {
       id: 10,
       threadId: 5,
       updatedAt: currentDate,
-      userId: 2,
+      userId: 3, // Alice Johnson
       viewedThreadLastAt: currentDate,
     },
   ],
