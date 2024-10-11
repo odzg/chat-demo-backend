@@ -226,7 +226,7 @@ export const threadRoutes: FastifyPluginCallback = (fastify, _opts, done) => {
     async ({ body, params }, reply) => {
       const latestThreadMessage = db.threadMessages.at(-1);
 
-      const newDate = new UTCDateMini();
+      const newDate = new UTCDateMini().toISOString();
 
       const newThreadMessage: ThreadMessage = {
         ...body,
@@ -243,7 +243,7 @@ export const threadRoutes: FastifyPluginCallback = (fastify, _opts, done) => {
         if (client.readyState === client.OPEN) {
           client.send(
             JSON.stringify({
-              data: newThreadMessage,
+              payload: newThreadMessage,
               type: EventType.enum.create_thread_message,
             } satisfies CreateThreadMessageSchema),
           );
@@ -371,13 +371,13 @@ export const threadRoutes: FastifyPluginCallback = (fastify, _opts, done) => {
 
       Object.assign(threadUser, body);
 
-      threadUser.updatedAt = new UTCDateMini();
+      threadUser.updatedAt = new UTCDateMini().toISOString();
 
       fastify.websocketServer.clients.forEach((client) => {
         if (client.readyState === client.OPEN) {
           client.send(
             JSON.stringify({
-              data: threadUser,
+              payload: threadUser,
               type: EventType.enum.update_thread_user,
             } satisfies UpdateThreadUserEventSchema),
           );

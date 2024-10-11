@@ -2,28 +2,28 @@ import { z } from 'zod';
 
 export const ThreadMessage = z.object({
   content: z.string(),
-  createdAt: z.date(),
-  deletedAt: z.date().nullable(),
+  createdAt: z.string().datetime(),
+  deletedAt: z.string().datetime().nullable(),
   id: z.number(),
   threadId: z.number(),
-  updatedAt: z.date(),
+  updatedAt: z.string().datetime(),
   userId: z.number(),
 });
 export type ThreadMessage = z.infer<typeof ThreadMessage>;
 
 export const Thread = z.object({
-  createdAt: z.date(),
-  deletedAt: z.date().nullable(),
+  createdAt: z.string().datetime(),
+  deletedAt: z.string().datetime().nullable(),
   id: z.number(),
-  updatedAt: z.date(),
+  updatedAt: z.string().datetime(),
 });
 
 export const ThreadUser = z.object({
-  createdAt: z.date(),
-  deletedAt: z.date().nullable(),
+  createdAt: z.string().datetime(),
+  deletedAt: z.string().datetime().nullable(),
   id: z.number(),
   threadId: z.number(),
-  updatedAt: z.date(),
+  updatedAt: z.string().datetime(),
   userId: z.number(),
-  viewedThreadLastAt: z.date(),
+  viewedThreadLastAt: z.string().datetime(),
 });

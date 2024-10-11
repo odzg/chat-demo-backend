@@ -123,7 +123,7 @@ export const userRoutes: FastifyPluginCallback = (fastify, _opts, done) => {
 
       const latestUser = db.users.at(-1);
 
-      const newDate = new UTCDateMini();
+      const newDate = new UTCDateMini().toISOString();
 
       const newUser: User = {
         ...body,
@@ -164,7 +164,7 @@ export const userRoutes: FastifyPluginCallback = (fastify, _opts, done) => {
 
       Object.assign(user, body);
 
-      user.updatedAt = new UTCDateMini();
+      user.updatedAt = new UTCDateMini().toISOString();
 
       return reply.send(user);
     },
@@ -194,8 +194,8 @@ export const userRoutes: FastifyPluginCallback = (fastify, _opts, done) => {
 
       const newDate = new UTCDateMini();
 
-      user.deletedAt = newDate;
-      user.updatedAt = newDate;
+      user.deletedAt = newDate.toISOString();
+      user.updatedAt = newDate.toISOString();
 
       return reply.send(user);
     },

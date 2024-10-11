@@ -12,7 +12,7 @@ const DbSchema = z.object({
 });
 type DbSchema = z.infer<typeof DbSchema>;
 
-const currentDate = new UTCDateMini();
+const currentDate = new UTCDateMini().toISOString();
 
 const dbInitialData: DbSchema = {
   threadMessages: [

@@ -5,13 +5,13 @@ import { EventType } from '@/enums/event-type.js';
 import { ThreadMessage, ThreadUser } from './thread-schemas.js';
 
 const BaseEventSchema = z.object({
-  data: z.unknown(),
+  payload: z.unknown(),
   type: EventType,
 });
 type BaseEventSchema = z.infer<typeof BaseEventSchema>;
 
 export const UpdateThreadUserEventSchema = z.object({
-  data: ThreadUser,
+  payload: ThreadUser,
   type: z.literal(EventType.enum.update_thread_user),
 }) satisfies ZodType<BaseEventSchema>;
 export type UpdateThreadUserEventSchema = z.infer<
@@ -19,7 +19,7 @@ export type UpdateThreadUserEventSchema = z.infer<
 >;
 
 export const CreateThreadMessageSchema = z.object({
-  data: ThreadMessage,
+  payload: ThreadMessage,
   type: z.literal(EventType.enum.create_thread_message),
 }) satisfies ZodType<BaseEventSchema>;
 export type CreateThreadMessageSchema = z.infer<
