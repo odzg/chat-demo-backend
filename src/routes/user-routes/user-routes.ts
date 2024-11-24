@@ -5,7 +5,7 @@ import { UTCDateMini } from '@date-fns/utc';
 
 import type { User } from '@/schemas/user-schemas.js';
 
-import { db } from '@/db.js';
+import { database } from '@/database.js';
 
 import {
   CreateUserErrorResponse,
@@ -29,12 +29,12 @@ const USERS_ROUTE = '/users';
 const USER_ROUTE = `${USERS_ROUTE}/:userId`;
 const MY_USER_ROUTE = `${USERS_ROUTE}/me`;
 
-export const userRoutes: FastifyPluginCallback = (fastify, _opts, done) => {
+export const userRoutes: FastifyPluginCallback = (fastify, _options, done) => {
   fastify.addHook('onRequest', async (request, reply) => {
     try {
       await request.jwtVerify();
 
-      const doesAuthenticatedUserExist = db.users.some(
+      const doesAuthenticatedUserExist = database.users.some(
         ({ deletedAt, id }) => !deletedAt && id === Number(request.user.id),
       );
 
@@ -43,8 +43,8 @@ export const userRoutes: FastifyPluginCallback = (fastify, _opts, done) => {
           error: 'Invalid authentication details. Please sign-in again.',
         });
       }
-    } catch (err) {
-      reply.send(err);
+    } catch (error) {
+      reply.send(error);
     }
   });
 
@@ -60,7 +60,7 @@ export const userRoutes: FastifyPluginCallback = (fastify, _opts, done) => {
       },
     },
     async ({ params }, reply) => {
-      const user = db.users.find(
+      const user = database.users.find(
         ({ deletedAt, id }) => !deletedAt && id === Number(params.userId),
       );
 
@@ -85,7 +85,7 @@ export const userRoutes: FastifyPluginCallback = (fastify, _opts, done) => {
       },
     },
     async (request, reply) => {
-      const user = db.users.find(
+      const user = database.users.find(
         ({ deletedAt, id }) => !deletedAt && id === request.user.id,
       );
 
@@ -111,7 +111,7 @@ export const userRoutes: FastifyPluginCallback = (fastify, _opts, done) => {
       },
     },
     async ({ body }, reply) => {
-      const doesUserAlreadyExist = db.users.some(
+      const doesUserAlreadyExist = database.users.some(
         ({ deletedAt, email }) => email === body.email && !deletedAt,
       );
 
@@ -121,7 +121,7 @@ export const userRoutes: FastifyPluginCallback = (fastify, _opts, done) => {
         });
       }
 
-      const latestUser = db.users.at(-1);
+      const latestUser = database.users.at(-1);
 
       const newDate = new UTCDateMini().toISOString();
 
@@ -133,7 +133,7 @@ export const userRoutes: FastifyPluginCallback = (fastify, _opts, done) => {
         updatedAt: newDate,
       };
 
-      db.users.push(newUser);
+      database.users.push(newUser);
 
       return reply.send(newUser);
     },
@@ -152,7 +152,7 @@ export const userRoutes: FastifyPluginCallback = (fastify, _opts, done) => {
       },
     },
     async ({ body, params }, reply) => {
-      const user = db.users.find(
+      const user = database.users.find(
         ({ deletedAt, id }) => !deletedAt && id === Number(params.userId),
       );
 
@@ -182,7 +182,7 @@ export const userRoutes: FastifyPluginCallback = (fastify, _opts, done) => {
       },
     },
     async ({ params }, reply) => {
-      const user = db.users.find(
+      const user = database.users.find(
         ({ deletedAt, id }) => !deletedAt && id === Number(params.userId),
       );
 

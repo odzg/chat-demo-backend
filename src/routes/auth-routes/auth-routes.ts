@@ -1,7 +1,7 @@
 import type { FastifyPluginCallback } from 'fastify';
 import type { ZodTypeProvider } from 'fastify-type-provider-zod';
 
-import { db } from '@/db.js';
+import { database } from '@/database.js';
 
 import {
   SignInErrorResponse,
@@ -11,7 +11,7 @@ import {
 
 const SIGN_IN_ROUTE = '/sign-in';
 
-export const authRoutes: FastifyPluginCallback = (fastify, _opts, done) => {
+export const authRoutes: FastifyPluginCallback = (fastify, _options, done) => {
   fastify.withTypeProvider<ZodTypeProvider>().post(
     SIGN_IN_ROUTE,
     {
@@ -25,7 +25,7 @@ export const authRoutes: FastifyPluginCallback = (fastify, _opts, done) => {
       },
     },
     async ({ body }, reply) => {
-      const user = db.users.find(
+      const user = database.users.find(
         ({ deletedAt, email }) => !deletedAt && email === body.email,
       );
 

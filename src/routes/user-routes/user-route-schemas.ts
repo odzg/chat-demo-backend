@@ -5,12 +5,10 @@ import { User } from '@/schemas/user-schemas.js';
 export const GetUserRequestParams = z.object({
   userId: z.string(),
 });
-export const GetUserResponse = User;
+
 export const GetUserErrorResponse = z.object({
   error: z.string(),
 });
-
-export const GetMyUserResponse = User;
 export const GetMyUserErrorResponse = z.object({
   error: z.string(),
 });
@@ -21,7 +19,6 @@ export const CreateUserRequestBody = User.omit({
   id: true,
   updatedAt: true,
 });
-export const CreateUserResponse = User;
 export const CreateUserErrorResponse = z.object({
   error: z.string(),
 });
@@ -36,7 +33,7 @@ export const UpdateUserRequestBody = User.pick({
   password: true,
   profilePictureUrl: true,
 }).partial();
-export const UpdateUserResponse = User;
+
 export const UpdateUserErrorResponse = z.object({
   error: z.string(),
 });
@@ -44,7 +41,14 @@ export const UpdateUserErrorResponse = z.object({
 export const DeleteUserRequestParams = z.object({
   userId: z.string(),
 });
-export const DeleteUserResponse = User;
 export const DeleteUserErrorResponse = z.object({
   error: z.string(),
 });
+
+export {
+  User as CreateUserResponse,
+  User as DeleteUserResponse,
+  User as GetMyUserResponse,
+  User as GetUserResponse,
+  User as UpdateUserResponse,
+} from '@/schemas/user-schemas.js';

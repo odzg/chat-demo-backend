@@ -4,17 +4,17 @@ import { z } from 'zod';
 import { Thread, ThreadMessage, ThreadUser } from './schemas/thread-schemas.js';
 import { User } from './schemas/user-schemas.js';
 
-const DbSchema = z.object({
+const DatabaseSchema = z.object({
   threadMessages: ThreadMessage.array(),
   threads: Thread.array(),
   threadUsers: ThreadUser.array(),
   users: User.array(),
 });
-type DbSchema = z.infer<typeof DbSchema>;
+type DatabaseSchema = z.infer<typeof DatabaseSchema>;
 
 const currentDate = new UTCDateMini().toISOString();
 
-const dbInitialData: DbSchema = {
+const databaseInitialData: DatabaseSchema = {
   threadMessages: [
     {
       content: 'Hello, world!',
@@ -308,4 +308,4 @@ const dbInitialData: DbSchema = {
   ],
 };
 
-export const db = DbSchema.parse(dbInitialData);
+export const database = DatabaseSchema.parse(databaseInitialData);

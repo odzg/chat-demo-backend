@@ -9,7 +9,7 @@ import type {
 } from '@/schemas/event-schemas.js';
 import type { ThreadMessage } from '@/schemas/thread-schemas.js';
 
-import { db } from '@/db.js';
+import { database } from '@/database.js';
 import { EventType } from '@/enums/event-type.js';
 import { User } from '@/schemas/user-schemas.js';
 
@@ -47,12 +47,16 @@ const THREAD_MESSAGE_ROUTE = `${THREAD_MESSAGES_ROUTE}/:messageId`;
 const THREAD_USERS_ROUTE = `${THREAD_ROUTE}/users`;
 const THREAD_USER_ROUTE = `${THREAD_USERS_ROUTE}/:threadUserId`;
 
-export const threadRoutes: FastifyPluginCallback = (fastify, _opts, done) => {
+export const threadRoutes: FastifyPluginCallback = (
+  fastify,
+  _options,
+  done,
+) => {
   fastify.addHook('onRequest', async (request, reply) => {
     try {
       await request.jwtVerify();
 
-      const doesAuthenticatedUserExist = db.users.some(
+      const doesAuthenticatedUserExist = database.users.some(
         ({ deletedAt, id }) => !deletedAt && id === Number(request.user.id),
       );
 
@@ -61,8 +65,8 @@ export const threadRoutes: FastifyPluginCallback = (fastify, _opts, done) => {
           error: 'Invalid authentication details. Please sign-in again.',
         });
       }
-    } catch (err) {
-      reply.send(err);
+    } catch (error) {
+      reply.send(error);
     }
   });
 
@@ -77,7 +81,7 @@ export const threadRoutes: FastifyPluginCallback = (fastify, _opts, done) => {
       },
     },
     async (request, reply) => {
-      const user = db.users.find(
+      const user = database.users.find(
         ({ deletedAt, id }) => !deletedAt && id === Number(request.user.id),
       );
 
@@ -87,8 +91,8 @@ export const threadRoutes: FastifyPluginCallback = (fastify, _opts, done) => {
         });
       }
 
-      const threads = db.threads.filter((thread) => {
-        const isThreadAssociatedWithUser = db.threadUsers.some(
+      const threads = database.threads.filter((thread) => {
+        const isThreadAssociatedWithUser = database.threadUsers.some(
           (threadUser) =>
             threadUser.threadId === thread.id &&
             threadUser.userId === request.user.id,
@@ -101,15 +105,15 @@ export const threadRoutes: FastifyPluginCallback = (fastify, _opts, done) => {
         threads.map((thread) => ({
           ...thread,
           lastMessage:
-            db.threadMessages.findLast(
+            database.threadMessages.findLast(
               ({ threadId }) => threadId === thread.id,
             ) ?? null,
-          threadUsers: db.threadUsers
+          threadUsers: database.threadUsers
             .filter(({ threadId }) => threadId === thread.id)
             .map((threadUser) => ({
               ...threadUser,
               user: User.parse(
-                db.users.find(({ id }) => id === threadUser.userId),
+                database.users.find(({ id }) => id === threadUser.userId),
               ),
             })),
         })),
@@ -129,7 +133,7 @@ export const threadRoutes: FastifyPluginCallback = (fastify, _opts, done) => {
       },
     },
     async ({ params }, reply) => {
-      const thread = db.threads.find(
+      const thread = database.threads.find(
         ({ deletedAt, id }) => !deletedAt && id === Number(params.threadId),
       );
 
@@ -155,7 +159,7 @@ export const threadRoutes: FastifyPluginCallback = (fastify, _opts, done) => {
       },
     },
     async ({ params }, reply) => {
-      const thread = db.threads.find(
+      const thread = database.threads.find(
         ({ deletedAt, id }) => !deletedAt && id === Number(params.threadId),
       );
 
@@ -165,7 +169,7 @@ export const threadRoutes: FastifyPluginCallback = (fastify, _opts, done) => {
         });
       }
 
-      const threadMessages = db.threadMessages.filter(
+      const threadMessages = database.threadMessages.filter(
         ({ deletedAt, threadId }) => !deletedAt && threadId === thread.id,
       );
 
@@ -185,7 +189,7 @@ export const threadRoutes: FastifyPluginCallback = (fastify, _opts, done) => {
       },
     },
     async ({ params }, reply) => {
-      const thread = db.threads.find(
+      const thread = database.threads.find(
         ({ deletedAt, id }) => !deletedAt && id === Number(params.threadId),
       );
 
@@ -195,7 +199,7 @@ export const threadRoutes: FastifyPluginCallback = (fastify, _opts, done) => {
         });
       }
 
-      const threadMessage = db.threadMessages.find(
+      const threadMessage = database.threadMessages.find(
         ({ deletedAt, id, threadId }) =>
           !deletedAt &&
           threadId === thread.id &&
@@ -224,7 +228,7 @@ export const threadRoutes: FastifyPluginCallback = (fastify, _opts, done) => {
       },
     },
     async ({ body, params }, reply) => {
-      const latestThreadMessage = db.threadMessages.at(-1);
+      const latestThreadMessage = database.threadMessages.at(-1);
 
       const newDate = new UTCDateMini().toISOString();
 
@@ -237,9 +241,9 @@ export const threadRoutes: FastifyPluginCallback = (fastify, _opts, done) => {
         updatedAt: newDate,
       };
 
-      db.threadMessages.push(newThreadMessage);
+      database.threadMessages.push(newThreadMessage);
 
-      fastify.websocketServer.clients.forEach((client) => {
+      for (const client of fastify.websocketServer.clients) {
         if (client.readyState === client.OPEN) {
           client.send(
             JSON.stringify({
@@ -248,7 +252,7 @@ export const threadRoutes: FastifyPluginCallback = (fastify, _opts, done) => {
             } satisfies CreateThreadMessageSchema),
           );
         }
-      });
+      }
 
       return reply.send(newThreadMessage);
     },
@@ -266,7 +270,7 @@ export const threadRoutes: FastifyPluginCallback = (fastify, _opts, done) => {
       },
     },
     async ({ params }, reply) => {
-      const thread = db.threads.find(
+      const thread = database.threads.find(
         ({ deletedAt, id }) => !deletedAt && id === Number(params.threadId),
       );
 
@@ -276,14 +280,16 @@ export const threadRoutes: FastifyPluginCallback = (fastify, _opts, done) => {
         });
       }
 
-      const threadUsers = db.threadUsers.filter(
+      const threadUsers = database.threadUsers.filter(
         ({ deletedAt, threadId }) => !deletedAt && threadId === thread.id,
       );
 
       return reply.send(
         threadUsers.map((threadUser) => ({
           ...threadUser,
-          user: User.parse(db.users.find(({ id }) => id === threadUser.userId)),
+          user: User.parse(
+            database.users.find(({ id }) => id === threadUser.userId),
+          ),
         })),
       );
     },
@@ -301,7 +307,7 @@ export const threadRoutes: FastifyPluginCallback = (fastify, _opts, done) => {
       },
     },
     async ({ params }, reply) => {
-      const thread = db.threads.find(
+      const thread = database.threads.find(
         ({ deletedAt, id }) => !deletedAt && id === Number(params.threadId),
       );
 
@@ -311,7 +317,7 @@ export const threadRoutes: FastifyPluginCallback = (fastify, _opts, done) => {
         });
       }
 
-      const threadUser = db.threadUsers.find(
+      const threadUser = database.threadUsers.find(
         ({ deletedAt, id, threadId }) =>
           !deletedAt &&
           threadId === thread.id &&
@@ -327,7 +333,9 @@ export const threadRoutes: FastifyPluginCallback = (fastify, _opts, done) => {
 
       return reply.send({
         ...threadUser,
-        user: User.parse(db.users.find(({ id }) => id === threadUser.userId)),
+        user: User.parse(
+          database.users.find(({ id }) => id === threadUser.userId),
+        ),
       });
     },
   );
@@ -345,7 +353,7 @@ export const threadRoutes: FastifyPluginCallback = (fastify, _opts, done) => {
       },
     },
     async ({ body, params }, reply) => {
-      const thread = db.threads.find(
+      const thread = database.threads.find(
         ({ deletedAt, id }) => !deletedAt && id === Number(params.threadId),
       );
 
@@ -355,7 +363,7 @@ export const threadRoutes: FastifyPluginCallback = (fastify, _opts, done) => {
         });
       }
 
-      const threadUser = db.threadUsers.find(
+      const threadUser = database.threadUsers.find(
         ({ deletedAt, id, threadId }) =>
           !deletedAt &&
           threadId === thread.id &&
@@ -373,7 +381,7 @@ export const threadRoutes: FastifyPluginCallback = (fastify, _opts, done) => {
 
       threadUser.updatedAt = new UTCDateMini().toISOString();
 
-      fastify.websocketServer.clients.forEach((client) => {
+      for (const client of fastify.websocketServer.clients) {
         if (client.readyState === client.OPEN) {
           client.send(
             JSON.stringify({
@@ -382,11 +390,13 @@ export const threadRoutes: FastifyPluginCallback = (fastify, _opts, done) => {
             } satisfies UpdateThreadUserEventSchema),
           );
         }
-      });
+      }
 
       return reply.send({
         ...threadUser,
-        user: User.parse(db.users.find(({ id }) => id === threadUser.userId)),
+        user: User.parse(
+          database.users.find(({ id }) => id === threadUser.userId),
+        ),
       });
     },
   );

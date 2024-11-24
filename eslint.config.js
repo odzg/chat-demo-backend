@@ -14,6 +14,7 @@ import perfectionist from 'eslint-plugin-perfectionist';
 import pluginPromise from 'eslint-plugin-promise';
 // @ts-expect-error Currently does not include a type-declaration file
 import pluginSecurity from 'eslint-plugin-security';
+import eslintPluginUnicorn from 'eslint-plugin-unicorn';
 import eslintPluginYml from 'eslint-plugin-yml';
 import typegen from 'eslint-typegen';
 import tseslint from 'typescript-eslint';
@@ -96,6 +97,7 @@ export default typegen([
     files: [JS_EXTENSIONS_GLOB],
     ...jsdoc.configs['flat/recommended-typescript-flavor-error'],
   },
+  eslintPluginUnicorn.configs['flat/recommended'],
   {
     rules: {
       'import-x/default': 'off', // TypeScript already enforces this
@@ -128,11 +130,21 @@ export default typegen([
             'object',
             'unknown',
           ],
-          internalPattern: ['@/**'],
+          internalPattern: ['^@/'],
           newlinesBetween: 'always',
         },
       ],
       'security/detect-object-injection': 'off',
+      'unicorn/no-null': 'off', // Too restrictive
+      'unicorn/prevent-abbreviations': [
+        'error',
+        {
+          allowList: {
+            EnvSchema: true,
+          },
+          ignore: [/^env$/, /props$/i, /params$/i],
+        },
+      ],
     },
   },
   {
