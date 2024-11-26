@@ -8,5 +8,5 @@
     "tsBuildInfoFile": null
   },
   "extends": "./tsconfig.json",
-  "include": ["src"]
+  "include": ["src", "fastify-jwt.d.ts"]
 }

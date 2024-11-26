@@ -1,3 +1,3 @@
-export * from './user-route-schemas.js';
+export * from './user-route-schemas.ts';
 
-export { userRoutes } from './user-routes.js';
+export { userRoutes } from './user-routes.ts';

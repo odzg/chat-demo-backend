@@ -1,8 +1,8 @@
 import { UTCDateMini } from '@date-fns/utc';
 import { z } from 'zod';
 
-import { Thread, ThreadMessage, ThreadUser } from './schemas/thread-schemas.js';
-import { User } from './schemas/user-schemas.js';
+import { Thread, ThreadMessage, ThreadUser } from './schemas/thread-schemas.ts';
+import { User } from './schemas/user-schemas.ts';
 
 const DatabaseSchema = z.object({
   threadMessages: ThreadMessage.array(),

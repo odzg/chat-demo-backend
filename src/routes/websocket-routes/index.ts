@@ -1,1 +1,1 @@
-export { websocketRoutes } from './websocket-routes.js';
+export { websocketRoutes } from './websocket-routes.ts';

@@ -23,7 +23,7 @@ import {
   UpdateUserRequestBody,
   UpdateUserRequestParams,
   UpdateUserResponse,
-} from './user-route-schemas.js';
+} from './user-route-schemas.ts';
 
 const USERS_ROUTE = '/users';
 const USER_ROUTE = `${USERS_ROUTE}/:userId`;

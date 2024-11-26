@@ -1,3 +1,3 @@
-export * from './thread-route-schemas.js';
+export * from './thread-route-schemas.ts';
 
-export { threadRoutes } from './thread-routes.js';
+export { threadRoutes } from './thread-routes.ts';

@@ -7,7 +7,7 @@ import {
   SignInErrorResponse,
   SignInRequestBody,
   SignInResponse,
-} from './auth-route-schemas.js';
+} from './auth-route-schemas.ts';
 
 const SIGN_IN_ROUTE = '/sign-in';
 

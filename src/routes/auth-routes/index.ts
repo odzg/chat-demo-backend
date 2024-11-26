@@ -1,3 +1,3 @@
-export * from './auth-route-schemas.js';
+export * from './auth-route-schemas.ts';
 
-export { authRoutes } from './auth-routes.js';
+export { authRoutes } from './auth-routes.ts';

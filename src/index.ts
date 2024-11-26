@@ -7,8 +7,8 @@ import {
   validatorCompiler,
 } from 'fastify-type-provider-zod';
 
-import { env } from './constants/env.js';
-import { routes } from './routes/index.js';
+import { env } from './constants/env.ts';
+import { routes } from './routes/index.ts';
 
 const fastify = Fastify({ logger: true });
 

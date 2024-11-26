@@ -38,7 +38,7 @@ import {
   UpdateThreadUserRequestBody,
   UpdateThreadUserRequestParams,
   UpdateThreadUserResponse,
-} from './thread-route-schemas.js';
+} from './thread-route-schemas.ts';
 
 const THREADS_ROUTE = '/threads';
 const THREAD_ROUTE = `${THREADS_ROUTE}/:threadId`;
