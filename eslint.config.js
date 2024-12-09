@@ -12,6 +12,7 @@ import nodePlugin from 'eslint-plugin-n';
 import perfectionist from 'eslint-plugin-perfectionist';
 // @ts-expect-error Currently does not include a type-declaration file
 import pluginPromise from 'eslint-plugin-promise';
+import regexpPlugin from 'eslint-plugin-regexp';
 // @ts-expect-error Currently does not include a type-declaration file
 import pluginSecurity from 'eslint-plugin-security';
 import eslintPluginUnicorn from 'eslint-plugin-unicorn';
@@ -97,6 +98,7 @@ export default typegen([
     ...jsdoc.configs['flat/recommended-typescript-flavor-error'],
   },
   eslintPluginUnicorn.configs['flat/recommended'],
+  regexpPlugin.configs['flat/recommended'],
   {
     rules: {
       'import-x/default': 'off', // TypeScript already enforces this
