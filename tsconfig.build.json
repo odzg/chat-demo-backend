@@ -1,12 +1,13 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
-    "incremental": false,
+    "noCheck": true,
     "noEmit": false,
     "noEmitOnError": true,
     "outDir": "dist",
-    "tsBuildInfoFile": null
+    "tsBuildInfoFile": "node_modules/.cache/typescript/tsconfig.build.tsbuildinfo"
   },
+  "exclude": ["**/*.test.*"],
   "extends": "./tsconfig.json",
   "include": ["src", "fastify-jwt.d.ts"]
 }
