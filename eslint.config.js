@@ -135,7 +135,7 @@ export default typegen([
           newlinesBetween: 'always',
         },
       ],
-      'security/detect-object-injection': 'off',
+      'security/detect-object-injection': 'off', // Too restrictive
       'unicorn/no-null': 'off', // Too restrictive
       'unicorn/prevent-abbreviations': [
         'error',
