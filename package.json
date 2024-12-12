@@ -18,7 +18,7 @@
     "@types/eslint__js": "8.42.3",
     "@types/node": "22.10.2",
     "@types/ws": "8.5.13",
-    "dependency-cruiser": "16.7.0",
+    "dependency-cruiser": "16.8.0",
     "eslint": "9.16.0",
     "eslint-config-prettier": "9.1.0",
     "eslint-import-resolver-typescript": "3.7.0",
