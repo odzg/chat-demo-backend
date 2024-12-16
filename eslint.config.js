@@ -9,12 +9,14 @@ import jsdoc from 'eslint-plugin-jsdoc';
 import eslintPluginJsonSchemaValidator from 'eslint-plugin-json-schema-validator';
 import eslintPluginJsonc from 'eslint-plugin-jsonc';
 import nodePlugin from 'eslint-plugin-n';
+import packageJson from 'eslint-plugin-package-json/configs/recommended';
 import perfectionist from 'eslint-plugin-perfectionist';
 // @ts-expect-error Currently does not include a type-declaration file
 import pluginPromise from 'eslint-plugin-promise';
 import regexpPlugin from 'eslint-plugin-regexp';
 // @ts-expect-error Currently does not include a type-declaration file
 import pluginSecurity from 'eslint-plugin-security';
+import sonarjs from 'eslint-plugin-sonarjs';
 import eslintPluginUnicorn from 'eslint-plugin-unicorn';
 import eslintPluginYml from 'eslint-plugin-yml';
 import typegen from 'eslint-typegen';
@@ -107,7 +109,9 @@ export default typegen([
     ...jsdoc.configs['flat/recommended-typescript-flavor-error'],
   },
   eslintPluginUnicorn.configs['flat/recommended'],
+  sonarjs.configs.recommended,
   regexpPlugin.configs['flat/recommended'],
+  packageJson,
   {
     rules: {
       'import-x/default': 'off', // TypeScript already enforces this
@@ -172,7 +176,7 @@ export default typegen([
   {
     files: ['package.json'],
     rules: {
-      'jsonc/sort-keys': 'off', // Sorting of keys within `package.json` is enforced by `syncpack`
+      'jsonc/sort-keys': 'off', // Sorting of keys within `package.json` is handled by `eslint-plugin-package-json`
     },
   },
   eslintConfigPrettier,

@@ -113,6 +113,7 @@ export const threadRoutes: FastifyPluginCallback = (
             .map((threadUser) => ({
               ...threadUser,
               user: User.parse(
+                // eslint-disable-next-line sonarjs/no-nested-functions -- Should refector
                 database.users.find(({ id }) => id === threadUser.userId),
               ),
             })),

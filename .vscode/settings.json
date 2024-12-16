@@ -14,6 +14,7 @@
     "import-x/no-duplicates",
     "import-x/first",
     "jsonc/sort-keys",
+    "package-json/*",
     "perfectionist/*"
   ],
   "eslint.rules.customizations": [

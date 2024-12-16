@@ -1,10 +1,10 @@
 import type { RcFile } from 'syncpack';
 
 export default {
+  lintFormatting: false,
   semverGroups: [
     {
       range: '',
     },
   ],
-  sortFirst: ['$schema', 'name', 'description', 'version', 'author'],
 } satisfies RcFile;
