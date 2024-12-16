@@ -9,7 +9,8 @@ export const ThreadMessage = z.object({
   updatedAt: z.string().datetime(),
   userId: z.number(),
 });
-export type ThreadMessage = z.infer<typeof ThreadMessage>;
+
+export interface ThreadMessage extends z.infer<typeof ThreadMessage> {}
 
 export const Thread = z.object({
   createdAt: z.string().datetime(),

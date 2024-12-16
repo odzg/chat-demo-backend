@@ -10,7 +10,8 @@ const DatabaseSchema = z.object({
   threadUsers: ThreadUser.array(),
   users: User.array(),
 });
-type DatabaseSchema = z.infer<typeof DatabaseSchema>;
+
+interface DatabaseSchema extends z.infer<typeof DatabaseSchema> {}
 
 const currentDate = new UTCDateMini().toISOString();
 

@@ -11,4 +11,5 @@ export const User = z.object({
   profilePictureUrl: z.string(),
   updatedAt: z.string().datetime(),
 });
-export type User = z.infer<typeof User>;
+
+export interface User extends z.infer<typeof User> {}

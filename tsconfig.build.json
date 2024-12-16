@@ -9,5 +9,5 @@
   },
   "exclude": ["**/*.test.*"],
   "extends": "./tsconfig.json",
-  "include": ["src", "fastify-jwt.d.ts"]
+  "include": ["src", "@types"]
 }

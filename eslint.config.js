@@ -22,7 +22,10 @@ import tseslint from 'typescript-eslint';
 
 const JS_EXTENSIONS_GLOB = '**/*.{js,cjs}';
 const TS_EXTENSIONS_GLOB = '**/*.{ts,tsx}';
-const JS_TS_EXTENSION_GLOBS = [JS_EXTENSIONS_GLOB, TS_EXTENSIONS_GLOB];
+const JS_TS_EXTENSION_GLOBS = /** @type {const} **/ ([
+  JS_EXTENSIONS_GLOB,
+  TS_EXTENSIONS_GLOB,
+]);
 
 export default typegen([
   {
@@ -44,7 +47,7 @@ export default typegen([
       ...tseslint.configs.strictTypeChecked,
       ...tseslint.configs.stylisticTypeChecked,
     ],
-    files: JS_TS_EXTENSION_GLOBS,
+    files: [...JS_TS_EXTENSION_GLOBS],
     languageOptions: {
       parserOptions: {
         projectService: true,
@@ -62,6 +65,12 @@ export default typegen([
       '@typescript-eslint/consistent-type-imports': [
         'error',
         { fixStyle: 'inline-type-imports' },
+      ],
+      '@typescript-eslint/no-empty-object-type': [
+        'error',
+        {
+          allowInterfaces: 'with-single-extends',
+        },
       ],
       '@typescript-eslint/no-import-type-side-effects': 'error',
       '@typescript-eslint/no-unused-vars': [

@@ -248,7 +248,7 @@ export const threadRoutes: FastifyPluginCallback = (
           client.send(
             JSON.stringify({
               payload: newThreadMessage,
-              type: EventType.enum.create_thread_message,
+              type: EventType.CREATE_THREAD_MESSAGE,
             } satisfies CreateThreadMessageSchema),
           );
         }
@@ -386,7 +386,7 @@ export const threadRoutes: FastifyPluginCallback = (
           client.send(
             JSON.stringify({
               payload: threadUser,
-              type: EventType.enum.update_thread_user,
+              type: EventType.UPDATE_THREAD_USER,
             } satisfies UpdateThreadUserEventSchema),
           );
         }

@@ -6,22 +6,23 @@ import { ThreadMessage, ThreadUser } from './thread-schemas.ts';
 
 const BaseEventSchema = z.object({
   payload: z.unknown(),
-  type: EventType,
+  type: z.nativeEnum(EventType),
 });
-type BaseEventSchema = z.infer<typeof BaseEventSchema>;
+
+interface BaseEventSchema extends z.infer<typeof BaseEventSchema> {}
 
 export const UpdateThreadUserEventSchema = z.object({
   payload: ThreadUser,
-  type: z.literal(EventType.enum.update_thread_user),
+  type: z.literal(EventType.UPDATE_THREAD_USER),
 }) satisfies ZodType<BaseEventSchema>;
-export type UpdateThreadUserEventSchema = z.infer<
-  typeof UpdateThreadUserEventSchema
->;
+
+export interface UpdateThreadUserEventSchema
+  extends z.infer<typeof UpdateThreadUserEventSchema> {}
 
 export const CreateThreadMessageSchema = z.object({
   payload: ThreadMessage,
-  type: z.literal(EventType.enum.create_thread_message),
+  type: z.literal(EventType.CREATE_THREAD_MESSAGE),
 }) satisfies ZodType<BaseEventSchema>;
-export type CreateThreadMessageSchema = z.infer<
-  typeof CreateThreadMessageSchema
->;
+
+export interface CreateThreadMessageSchema
+  extends z.infer<typeof CreateThreadMessageSchema> {}
