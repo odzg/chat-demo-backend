@@ -20,6 +20,9 @@
 # build
 /dist
 
+# local environment variables
+/.env
+
 # package managers
 /node_modules
 /.yarn
