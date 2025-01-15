@@ -1,10 +1,17 @@
 {
   "$schema": "https://unpkg.com/knip@5/schema.json",
   "entry": [
-    ".dependency-cruiser.js" // ".dependency-cruiser.js" is the config file for `dependency-cruiser`
+    // ".dependency-cruiser.js" is the config file for `dependency-cruiser`
+    ".dependency-cruiser.js"
   ],
+  "eslint": {
+    "entry": "eslint.config.ts"
+  },
   "ignoreDependencies": [
-    "@types/ws", // Required as `@fastify/websocket` depends on `ws`
-    "eslint-import-resolver-typescript" // Used implicitly by `eslint-plugin-import-x`
+    // Required as `@fastify/websocket` depends on `ws`
+    "@types/ws",
+
+    // Used implicitly by `eslint-plugin-import-x`
+    "eslint-import-resolver-typescript"
   ]
 }

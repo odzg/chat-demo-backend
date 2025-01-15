@@ -24,10 +24,7 @@ import tseslint from 'typescript-eslint';
 
 const JS_EXTENSIONS_GLOB = '**/*.{js,cjs}';
 const TS_EXTENSIONS_GLOB = '**/*.{ts,tsx}';
-const JS_TS_EXTENSION_GLOBS = /** @type {const} **/ ([
-  JS_EXTENSIONS_GLOB,
-  TS_EXTENSIONS_GLOB,
-]);
+const JS_TS_EXTENSION_GLOBS = [JS_EXTENSIONS_GLOB, TS_EXTENSIONS_GLOB] as const;
 
 export default typegen([
   {
@@ -162,7 +159,7 @@ export default typegen([
     },
   },
   {
-    files: ['eslint.config.js'],
+    files: ['eslint.config.*'],
     rules: {
       'n/no-unpublished-import': 'off', // `eslint.config.js` is expected to import many ESLint plugins which are considered "devDependencies"
     },
