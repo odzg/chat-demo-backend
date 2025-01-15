@@ -47,7 +47,7 @@
     "eslint-plugin-yml": "1.16.0",
     "eslint-typegen": "1.0.0",
     "jiti": "2.4.2",
-    "knip": "5.42.0",
+    "knip": "5.42.1",
     "prettier": "3.4.2",
     "rimraf": "6.0.1",
     "syncpack": "13.0.0",
