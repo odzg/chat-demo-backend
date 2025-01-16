@@ -8,7 +8,6 @@
     "dev": "tsx watch --env-file=.env src/index.ts",
     "format": "prettier --write --cache .",
     "format:check": "prettier --check --cache .",
-    "generate-dotenv-file": "node --experimental-strip-types=true scripts/generate-dotenv-file.ts",
     "lint": "eslint --max-warnings=0 .",
     "start": "node dist/index.js",
     "typecheck": "tsc"
