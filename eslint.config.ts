@@ -84,7 +84,7 @@ export default typegen([
   ...eslintPluginJsonc.configs['flat/recommended-with-jsonc'],
   ...eslintPluginJsonc.configs['flat/prettier'],
   ...eslintPluginJsonSchemaValidator.configs['flat/recommended'],
-  ...markdown.configs.processor,
+  ...markdown.configs.recommended,
   // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- No type declaration
   pluginSecurity.configs.recommended,
   // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- No type declaration
