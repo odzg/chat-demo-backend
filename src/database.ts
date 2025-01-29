@@ -258,7 +258,7 @@ const databaseInitialData: DatabaseSchema = {
       firstName: 'John',
       id: 1,
       lastName: 'Doe',
-      // eslint-disable-next-line sonarjs/no-hardcoded-passwords
+      // eslint-disable-next-line sonarjs/no-hardcoded-passwords -- Is hardcoded for demo purposes
       password: 'password123',
       profilePictureUrl: 'https://example.com/images/user1.jpg',
       updatedAt: currentDate,
@@ -270,7 +270,7 @@ const databaseInitialData: DatabaseSchema = {
       firstName: 'Jane',
       id: 2,
       lastName: 'Smith',
-      // eslint-disable-next-line sonarjs/no-hardcoded-passwords
+      // eslint-disable-next-line sonarjs/no-hardcoded-passwords -- Is hardcoded for demo purposes
       password: 'password456',
       profilePictureUrl: 'https://example.com/images/user2.jpg',
       updatedAt: currentDate,
@@ -282,7 +282,7 @@ const databaseInitialData: DatabaseSchema = {
       firstName: 'Alice',
       id: 3,
       lastName: 'Johnson',
-      // eslint-disable-next-line sonarjs/no-hardcoded-passwords
+      // eslint-disable-next-line sonarjs/no-hardcoded-passwords -- Is hardcoded for demo purposes
       password: 'password789',
       profilePictureUrl: 'https://example.com/images/user3.jpg',
       updatedAt: currentDate,
@@ -294,7 +294,7 @@ const databaseInitialData: DatabaseSchema = {
       firstName: 'Bob',
       id: 4,
       lastName: 'Lee',
-      // eslint-disable-next-line sonarjs/no-hardcoded-passwords
+      // eslint-disable-next-line sonarjs/no-hardcoded-passwords -- Is hardcoded for demo purposes
       password: 'password101112',
       profilePictureUrl: 'https://example.com/images/user4.jpg',
       updatedAt: currentDate,
@@ -306,7 +306,7 @@ const databaseInitialData: DatabaseSchema = {
       firstName: 'Charlie',
       id: 5,
       lastName: 'Brown',
-      // eslint-disable-next-line sonarjs/no-hardcoded-passwords
+      // eslint-disable-next-line sonarjs/no-hardcoded-passwords -- Is hardcoded for demo purposes
       password: 'password131415',
       profilePictureUrl: 'https://example.com/images/user5.jpg',
       updatedAt: currentDate,
