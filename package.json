@@ -25,7 +25,7 @@
     "@eslint-community/eslint-plugin-eslint-comments": "4.4.1",
     "@eslint/js": "9.19.0",
     "@eslint/markdown": "6.2.2",
-    "@types/node": "22.12.0",
+    "@types/node": "22.13.0",
     "@types/ws": "8.5.14",
     "dependency-cruiser": "16.9.0",
     "eslint": "9.19.0",
@@ -47,16 +47,16 @@
     "eslint-plugin-yml": "1.16.0",
     "eslint-typegen": "1.0.0",
     "jiti": "2.4.2",
-    "knip": "5.43.5",
+    "knip": "5.43.6",
     "prettier": "3.4.2",
-    "syncpack": "13.0.0",
+    "syncpack": "13.0.1",
     "tsc-alias": "1.8.10",
     "tsx": "4.19.2",
     "type-fest": "4.33.0",
     "typescript": "5.7.3",
     "typescript-eslint": "8.22.0"
   },
-  "packageManager": "pnpm@9.15.4+sha512.b2dc20e2fc72b3e18848459b37359a32064663e5627a51e4c74b2c29dd8e8e0491483c3abb40789cfd578bf362fb6ba8261b05f0387d76792ed6e23ea3b1b6a0",
+  "packageManager": "pnpm@9.15.5+sha512.845196026aab1cc3f098a0474b64dfbab2afe7a1b4e91dd86895d8e4aa32a7a6d03049e2d0ad770bbe4de023a7122fb68c1a1d6e0d033c7076085f9d5d4800d4",
   "engines": {
     "node": "22.13.1"
   }
