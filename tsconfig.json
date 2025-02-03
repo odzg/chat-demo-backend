@@ -25,7 +25,6 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "ES2022",
-    "tsBuildInfoFile": "node_modules/.cache/typescript/tsconfig.tsbuildinfo",
     "verbatimModuleSyntax": true
   },
   "exclude": ["dist"],

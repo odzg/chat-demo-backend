@@ -4,8 +4,7 @@
     "noCheck": true,
     "noEmit": false,
     "noEmitOnError": true,
-    "outDir": "dist",
-    "tsBuildInfoFile": "node_modules/.cache/typescript/tsconfig.build.tsbuildinfo"
+    "outDir": "dist"
   },
   "exclude": ["**/*.test.*"],
   "extends": "./tsconfig.json",
