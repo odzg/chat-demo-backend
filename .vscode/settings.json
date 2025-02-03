@@ -1,5 +1,4 @@
 {
-  "dotenv.enableAutocloaking": false,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   },
@@ -27,9 +26,6 @@
   "files.encoding": "utf8",
   "files.eol": "\n",
   "files.insertFinalNewline": true,
-  "git.autofetch": true,
-  "gitPrefix.pattern": ".*/",
-  "gitPrefix.replacement": "",
   "javascript.format.enable": false,
   "javascript.preferences.quoteStyle": "single",
   "typescript.enablePromptUseWorkspaceTsdk": true,
