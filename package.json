@@ -15,7 +15,7 @@
   "dependencies": {
     "@date-fns/utc": "2.1.0",
     "@fastify/cors": "10.0.2",
-    "@fastify/jwt": "9.0.3",
+    "@fastify/jwt": "9.0.4",
     "@fastify/websocket": "11.0.2",
     "fastify": "5.2.1",
     "fastify-type-provider-zod": "4.0.2",
@@ -37,7 +37,7 @@
     "eslint-plugin-json-schema-validator": "5.3.1",
     "eslint-plugin-jsonc": "2.19.1",
     "eslint-plugin-n": "17.15.1",
-    "eslint-plugin-package-json": "0.24.0",
+    "eslint-plugin-package-json": "0.25.0",
     "eslint-plugin-perfectionist": "4.8.0",
     "eslint-plugin-promise": "7.2.1",
     "eslint-plugin-regexp": "2.7.0",
@@ -52,7 +52,7 @@
     "syncpack": "13.0.2",
     "tsc-alias": "1.8.10",
     "tsx": "4.19.2",
-    "type-fest": "4.34.0",
+    "type-fest": "4.34.1",
     "typescript": "5.7.3",
     "typescript-eslint": "8.23.0"
   },

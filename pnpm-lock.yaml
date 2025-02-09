@@ -15,8 +15,8 @@ importers:
         specifier: 10.0.2
         version: 10.0.2
       '@fastify/jwt':
-        specifier: 9.0.3
-        version: 9.0.3
+        specifier: 9.0.4
+        version: 9.0.4
       '@fastify/websocket':
         specifier: 11.0.2
         version: 11.0.2
@@ -76,8 +76,8 @@ importers:
         specifier: 17.15.1
         version: 17.15.1(eslint@9.20.0(jiti@2.4.2))
       eslint-plugin-package-json:
-        specifier: 0.24.0
-        version: 0.24.0(@types/estree@1.0.6)(eslint@9.20.0(jiti@2.4.2))(jsonc-eslint-parser@2.4.0)
+        specifier: 0.25.0
+        version: 0.25.0(@types/estree@1.0.6)(eslint@9.20.0(jiti@2.4.2))(jsonc-eslint-parser@2.4.0)
       eslint-plugin-perfectionist:
         specifier: 4.8.0
         version: 4.8.0(eslint@9.20.0(jiti@2.4.2))(typescript@5.7.3)
@@ -121,8 +121,8 @@ importers:
         specifier: 4.19.2
         version: 4.19.2
       type-fest:
-        specifier: 4.34.0
-        version: 4.34.0
+        specifier: 4.34.1
+        version: 4.34.1
       typescript:
         specifier: 5.7.3
         version: 5.7.3
@@ -929,8 +929,8 @@ packages:
   '@fastify/forwarded@3.0.0':
     resolution: {integrity: sha512-kJExsp4JCms7ipzg7SJ3y8DwmePaELHxKYtg+tZow+k0znUTf3cb+npgyqm8+ATZOdmfgfydIebPDWM172wfyA==}
 
-  '@fastify/jwt@9.0.3':
-    resolution: {integrity: sha512-5OjeozLzwhMhrOkadHG9FhS5S3wNVIN6ADhBJd/x3VJIWptlRdc1ORksA6NHJ1ihvuAb0IOVK9giaCZTelnMSg==}
+  '@fastify/jwt@9.0.4':
+    resolution: {integrity: sha512-OJ5moNArmagwYIAeAE5xRI/cnZk7Nvuc+kz7Q+EWzODBszBfQaaeRABIkPD8nIkDrOh1fOnlNyrSpNV/QomiaQ==}
 
   '@fastify/merge-json-schemas@0.2.1':
     resolution: {integrity: sha512-OA3KGBCy6KtIvLf8DINC5880o5iBlDX4SxzLQS8HorJAbqluzLRn80UXU0bxZn7UOFhFgpRJDasfwn9nG4FG4A==}
@@ -1652,8 +1652,8 @@ packages:
     peerDependencies:
       eslint: '>=8.23.0'
 
-  eslint-plugin-package-json@0.24.0:
-    resolution: {integrity: sha512-zOqzk+BI3tW//Sz4ZTrlCoSPm9LnnYvLse6dkng2ihEHT3OFSXO4oDT+PqC9jo4vn8liEttqWfyhKiG/WiO5Jw==}
+  eslint-plugin-package-json@0.25.0:
+    resolution: {integrity: sha512-X1BDDn98xHWfxEylRpYHoiPMUvda83hd+H1if83Ny8gZ5LiLB0FcwXng1Or+gY3GLuYSaiYTy6r78Adeg48unw==}
     engines: {node: '>=18'}
     peerDependencies:
       eslint: '>=8.0.0'
@@ -3100,8 +3100,8 @@ packages:
     resolution: {integrity: sha512-4dbzIzqvjtgiM5rw1k5rEHtBANKmdudhGyBEajN01fEyhaAIhsoKNy6y7+IN93IfpFtwY9iqi7kD+xwKhQsNJA==}
     engines: {node: '>=8'}
 
-  type-fest@4.34.0:
-    resolution: {integrity: sha512-Qcg88ZJsJvRcUijtD6supagRSDf0y1FPZh4NroJpwRkoPYj6gGNidREwTgDuC0Pmq0PVAAzL8C8BZW7xhx5Q4A==}
+  type-fest@4.34.1:
+    resolution: {integrity: sha512-6kSc32kT0rbwxD6QL1CYe8IqdzN/J/ILMrNK+HMQCKH3insCDRY/3ITb0vcBss0a3t72fzh2YSzj8ko1HgwT3g==}
     engines: {node: '>=16'}
 
   typed-array-buffer@1.0.3:
@@ -4201,7 +4201,7 @@ snapshots:
 
   '@fastify/forwarded@3.0.0': {}
 
-  '@fastify/jwt@9.0.3':
+  '@fastify/jwt@9.0.4':
     dependencies:
       '@fastify/error': 4.0.0
       '@lukeed/ms': 2.0.2
@@ -5092,7 +5092,7 @@ snapshots:
       minimatch: 9.0.5
       semver: 7.7.1
 
-  eslint-plugin-package-json@0.24.0(@types/estree@1.0.6)(eslint@9.20.0(jiti@2.4.2))(jsonc-eslint-parser@2.4.0):
+  eslint-plugin-package-json@0.25.0(@types/estree@1.0.6)(eslint@9.20.0(jiti@2.4.2))(jsonc-eslint-parser@2.4.0):
     dependencies:
       '@altano/repository-tools': 0.1.1
       detect-indent: 6.1.0
@@ -6834,7 +6834,7 @@ snapshots:
 
   type-fest@0.8.1: {}
 
-  type-fest@4.34.0: {}
+  type-fest@4.34.1: {}
 
   typed-array-buffer@1.0.3:
     dependencies:
