@@ -23,6 +23,8 @@ import eslintPluginYml from 'eslint-plugin-yml';
 import typegen from 'eslint-typegen';
 import tseslint from 'typescript-eslint';
 
+import type { RuleOptions } from './eslint-typegen.d.ts';
+
 const GLOB_JS = '**/*.?([cm])js';
 const GLOB_TS = '**/*.?([cm])ts';
 
@@ -52,9 +54,6 @@ export default typegen([
         tsconfigRootDir: import.meta.dirname,
       },
     },
-  }),
-  {
-    files: [GLOB_JS, GLOB_TS],
     rules: {
       '@typescript-eslint/array-type': ['error', { default: 'generic' }],
       '@typescript-eslint/consistent-generic-constructors': 'error',
@@ -76,8 +75,8 @@ export default typegen([
         { argsIgnorePattern: '^_' },
       ],
       '@typescript-eslint/prefer-nullish-coalescing': 'off',
-    },
-  },
+    } satisfies RuleOptions,
+  }),
   // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- No type declaration
   comments.recommended,
   ...eslintPluginJsonc.configs['flat/recommended-with-jsonc'],
