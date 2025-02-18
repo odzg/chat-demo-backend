@@ -46,8 +46,8 @@ importers:
         specifier: 8.5.14
         version: 8.5.14
       dependency-cruiser:
-        specifier: 16.9.0
-        version: 16.9.0
+        specifier: 16.10.0
+        version: 16.10.0
       eslint:
         specifier: 9.20.1
         version: 9.20.1(jiti@2.4.2)
@@ -1455,8 +1455,8 @@ packages:
     resolution: {integrity: sha512-8QmQKqEASLd5nx0U1B1okLElbUuuttJ/AnYmRXbbbGDWh6uS208EjD4Xqq/I9wK7u0v6O08XhTWnt5XtEbR6Dg==}
     engines: {node: '>= 0.4'}
 
-  dependency-cruiser@16.9.0:
-    resolution: {integrity: sha512-Gc/xHNOBq1nk5i7FPCuexCD0m2OXB/WEfiSHfNYQaQaHZiZltnl5Ixp/ZG38Jvi8aEhKBQTHV4Aw6gmR7rWlOw==}
+  dependency-cruiser@16.10.0:
+    resolution: {integrity: sha512-o6pEB8X/XS0AjpQBhPJW3pSY7HIviRM7+G601T9ruV63NVJC4DxLMA+a1VzZlKOzO2fO6JKRHjRmGjzZZHEFYA==}
     engines: {node: ^18.17||>=20}
     hasBin: true
 
@@ -3201,8 +3201,8 @@ packages:
     resolution: {integrity: sha512-d7KLgL1LD3U3fgnvWEY1cQXoO/q6EQ1BSz48Sa149V/5zVTAbgmZIpyI8TRi6U9/JNyeYLlTKsEMPtLC27RFUg==}
     engines: {node: ^18.17.0 || >=20.5.0}
 
-  watskeburt@4.2.2:
-    resolution: {integrity: sha512-AOCg1UYxWpiHW1tUwqpJau8vzarZYTtzl2uu99UptBmbzx6kOzCGMfRLF6KIRX4PYekmryn89MzxlRNkL66YyA==}
+  watskeburt@4.2.3:
+    resolution: {integrity: sha512-uG9qtQYoHqAsnT711nG5iZc/8M5inSmkGCOp7pFaytKG2aTfIca7p//CjiVzAE4P7hzaYuCozMjNNaLgmhbK5g==}
     engines: {node: ^18||>=20}
     hasBin: true
 
@@ -4782,7 +4782,7 @@ snapshots:
       has-property-descriptors: 1.0.2
       object-keys: 1.1.1
 
-  dependency-cruiser@16.9.0:
+  dependency-cruiser@16.10.0:
     dependencies:
       acorn: 8.14.0
       acorn-jsx: 5.3.2(acorn@8.14.0)
@@ -4805,7 +4805,7 @@ snapshots:
       semver: 7.7.1
       teamcity-service-messages: 0.1.14
       tsconfig-paths-webpack-plugin: 4.2.0
-      watskeburt: 4.2.2
+      watskeburt: 4.2.3
 
   dequal@2.0.3: {}
 
@@ -6976,7 +6976,7 @@ snapshots:
 
   validate-npm-package-name@6.0.0: {}
 
-  watskeburt@4.2.2: {}
+  watskeburt@4.2.3: {}
 
   wcwidth@1.0.1:
     dependencies:
