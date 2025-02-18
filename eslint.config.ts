@@ -10,6 +10,7 @@ import eslintPluginImportX from 'eslint-plugin-import-x';
 import jsdoc from 'eslint-plugin-jsdoc';
 import eslintPluginJsonSchemaValidator from 'eslint-plugin-json-schema-validator';
 import eslintPluginJsonc from 'eslint-plugin-jsonc';
+import eslintPluginMath from 'eslint-plugin-math';
 import nodePlugin from 'eslint-plugin-n';
 import packageJson from 'eslint-plugin-package-json/configs/recommended';
 import perfectionist from 'eslint-plugin-perfectionist';
@@ -106,6 +107,7 @@ export default typegen([
   sonarjs.configs.recommended,
   regexpPlugin.configs['flat/recommended'],
   deMorgan.configs.recommended,
+  eslintPluginMath.configs.recommended,
   packageJson,
   {
     rules: {

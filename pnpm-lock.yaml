@@ -75,6 +75,9 @@ importers:
       eslint-plugin-jsonc:
         specifier: 2.19.1
         version: 2.19.1(eslint@9.20.1(jiti@2.4.2))
+      eslint-plugin-math:
+        specifier: 0.6.0
+        version: 0.6.0(eslint@9.20.1(jiti@2.4.2))
       eslint-plugin-n:
         specifier: 17.15.1
         version: 17.15.1(eslint@9.20.1(jiti@2.4.2))
@@ -1090,6 +1093,12 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     peerDependencies:
       eslint: '>=6.0.0'
+
+  eslint-plugin-math@0.6.0:
+    resolution: {integrity: sha512-IJNCIIf3/dosHYc+HnUMgkw9Ey/FUsp+WhQEpfhWDFjTAxt2tslnhr8y7B7uQM3Cq5bdq9TpWWXPgFjq6rBt5A==}
+    engines: {node: ^18 || >=20}
+    peerDependencies:
+      eslint: '>=8.57.0'
 
   eslint-plugin-n@17.15.1:
     resolution: {integrity: sha512-KFw7x02hZZkBdbZEFQduRGH4VkIH4MW97ClsbAM4Y4E6KguBJWGfWG1P4HEIpZk2bkoWf0bojpnjNAhYQP8beA==}
@@ -3709,6 +3718,11 @@ snapshots:
       synckit: 0.6.2
     transitivePeerDependencies:
       - '@eslint/json'
+
+  eslint-plugin-math@0.6.0(eslint@9.20.1(jiti@2.4.2)):
+    dependencies:
+      '@eslint-community/eslint-utils': 4.4.1(eslint@9.20.1(jiti@2.4.2))
+      eslint: 9.20.1(jiti@2.4.2)
 
   eslint-plugin-n@17.15.1(eslint@9.20.1(jiti@2.4.2)):
     dependencies:
