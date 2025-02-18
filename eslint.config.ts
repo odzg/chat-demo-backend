@@ -101,7 +101,7 @@ export default typegen([
     files: [GLOB_JS],
     ...jsdoc.configs['flat/recommended-typescript-flavor-error'],
   },
-  eslintPluginUnicorn.configs['flat/recommended'],
+  eslintPluginUnicorn.configs.recommended,
   sonarjs.configs.recommended,
   regexpPlugin.configs['flat/recommended'],
   packageJson,
