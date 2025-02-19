@@ -23,7 +23,7 @@
     "rewriteRelativeImportExtensions": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "ES2024",
+    "target": "ESNext",
     "verbatimModuleSyntax": true
   },
   "exclude": ["dist"],
