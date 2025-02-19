@@ -4,7 +4,8 @@
     "noCheck": true,
     "noEmit": false,
     "noEmitOnError": true,
-    "outDir": "dist"
+    "outDir": "./dist",
+    "rootDir": "./"
   },
   "exclude": ["**/*.test.*"],
   "extends": "./tsconfig.json",

@@ -3,9 +3,9 @@ import type { ZodTypeProvider } from 'fastify-type-provider-zod';
 
 import { UTCDateMini } from '@date-fns/utc';
 
-import type { User } from '@/schemas/user-schemas.js';
+import type { User } from '#schemas/user-schemas.js';
 
-import { database } from '@/database.js';
+import { database } from '#database.js';
 
 import {
   CreateUserErrorResponse,

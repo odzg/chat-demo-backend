@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import { User } from '@/schemas/user-schemas.js';
+import { User } from '#schemas/user-schemas.js';
 
 export const SignInRequestBody = User.pick({
   email: true,

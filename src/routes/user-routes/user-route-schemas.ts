@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import { User } from '@/schemas/user-schemas.js';
+import { User } from '#schemas/user-schemas.js';
 
 export const GetUserRequestParams = z.object({
   userId: z.string(),
@@ -51,4 +51,4 @@ export {
   User as GetMyUserResponse,
   User as GetUserResponse,
   User as UpdateUserResponse,
-} from '@/schemas/user-schemas.js';
+} from '#schemas/user-schemas.js';

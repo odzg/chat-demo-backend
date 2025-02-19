@@ -1,7 +1,7 @@
 import type { FastifyPluginCallback } from 'fastify';
 import type { ZodTypeProvider } from 'fastify-type-provider-zod';
 
-import { database } from '@/database.js';
+import { database } from '#database.js';
 
 import {
   SignInErrorResponse,

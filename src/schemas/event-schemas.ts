@@ -1,6 +1,6 @@
 import { z, type ZodType } from 'zod';
 
-import { EventType } from '@/enums/event-type.js';
+import { EventType } from '#enums/event-type.js';
 
 import { ThreadMessage, ThreadUser } from './thread-schemas.ts';
 

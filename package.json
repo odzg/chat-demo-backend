@@ -3,13 +3,19 @@
   "name": "chat-demo-backend",
   "version": "0.0.0",
   "type": "module",
+  "imports": {
+    "#*": {
+      "production": "./dist/src/*",
+      "default": "./src/*"
+    }
+  },
   "scripts": {
-    "build": "tsc -p tsconfig.build.json && tsc-alias -p tsconfig.build.json",
+    "build": "tsc -p tsconfig.build.json",
     "dev": "tsx watch --env-file=.env ./src/index.ts",
     "format": "prettier --write --cache .",
     "format:check": "prettier --check --cache .",
     "lint": "eslint --max-warnings=0 .",
-    "start": "node ./dist/index.js",
+    "start": "node --env-file=.env --conditions=production ./dist/src/index.js",
     "typecheck": "tsc"
   },
   "dependencies": {
@@ -52,7 +58,6 @@
     "knip": "5.44.4",
     "prettier": "3.5.1",
     "syncpack": "13.0.2",
-    "tsc-alias": "1.8.10",
     "tsx": "4.19.3",
     "type-fest": "4.35.0",
     "typescript": "5.7.3",
