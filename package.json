@@ -5,7 +5,7 @@
   "type": "module",
   "imports": {
     "#*": {
-      "production": "./dist/src/*",
+      "production": "./dist/*",
       "default": "./src/*"
     }
   },
@@ -15,7 +15,7 @@
     "format": "prettier --write --cache .",
     "format:check": "prettier --check --cache .",
     "lint": "eslint --max-warnings=0 .",
-    "start": "node --env-file=.env --conditions=production ./dist/src/index.js",
+    "start": "node --env-file=.env --conditions=production ./dist/index.js",
     "typecheck": "tsc"
   },
   "dependencies": {
