@@ -79,6 +79,14 @@ export default typegen([
       '@typescript-eslint/prefer-nullish-coalescing': 'off',
     } satisfies RuleOptions,
   }),
+  {
+    files: [GLOB_TS],
+    ...jsdoc.configs['flat/recommended-typescript-error'],
+  },
+  {
+    files: [GLOB_JS],
+    ...jsdoc.configs['flat/recommended-typescript-flavor-error'],
+  },
   // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- No type declaration
   comments.recommended,
   ...eslintPluginJsonc.configs['flat/recommended-with-jsonc'],
@@ -95,14 +103,6 @@ export default typegen([
   nodePlugin.configs['flat/recommended-script'],
   eslintPluginImportX.flatConfigs.recommended,
   eslintPluginImportX.flatConfigs.typescript,
-  {
-    files: [GLOB_TS],
-    ...jsdoc.configs['flat/recommended-typescript-error'],
-  },
-  {
-    files: [GLOB_JS],
-    ...jsdoc.configs['flat/recommended-typescript-flavor-error'],
-  },
   eslintPluginUnicorn.configs.recommended,
   sonarjs.configs.recommended,
   regexpPlugin.configs['flat/recommended'],
