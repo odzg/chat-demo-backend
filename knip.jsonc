@@ -1,7 +1,7 @@
 {
   "$schema": "https://unpkg.com/knip@5/schema.json",
   "entry": [
-    // Entry file of `dependency-cruiser`
+    // Config file of `dependency-cruiser`
     ".dependency-cruiser.js"
   ],
   "eslint": {
