@@ -29,6 +29,10 @@
     "zod": "3.24.2"
   },
   "devDependencies": {
+    "@commitlint/cli": "19.7.1",
+    "@commitlint/config-conventional": "19.7.1",
+    "@commitlint/prompt-cli": "19.7.1",
+    "@commitlint/types": "19.5.0",
     "@eslint-community/eslint-plugin-eslint-comments": "4.4.1",
     "@eslint/js": "9.21.0",
     "@eslint/markdown": "6.2.2",
@@ -57,6 +61,7 @@
     "eslint-typegen": "2.0.0",
     "jiti": "2.4.2",
     "knip": "5.45.0",
+    "lefthook": "1.11.2",
     "prettier": "3.5.3",
     "syncpack": "13.0.2",
     "tsx": "4.19.3",

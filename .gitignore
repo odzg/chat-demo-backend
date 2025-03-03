@@ -23,6 +23,8 @@
 # local environment variables
 /.env
 
+lefthook-local.*
+
 # package managers
 /node_modules
 /.yarn

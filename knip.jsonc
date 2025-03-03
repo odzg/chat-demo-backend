@@ -8,6 +8,13 @@
     "entry": "eslint.config.ts"
   },
   "ignoreDependencies": [
+    // Used by `lefthook` and may be ran manually
+    "@commitlint/cli",
+
+    // May be ran manually
+    "@commitlint/prompt-cli",
+
+    // Used implicitly by `eslint-plugin-import-x`
     // Required as `@fastify/websocket` depends on `ws`
     "@types/ws",
 
