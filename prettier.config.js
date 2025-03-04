@@ -8,7 +8,7 @@ export default {
       },
     },
     {
-      files: 'knip.jsonc',
+      files: '*.jsonc',
       options: {
         trailingComma: 'none',
       },
