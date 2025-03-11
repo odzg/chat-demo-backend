@@ -3,8 +3,7 @@ import comments from '@eslint-community/eslint-plugin-eslint-comments/configs';
 import eslint from '@eslint/js';
 import markdown from '@eslint/markdown';
 import gitignore from 'eslint-config-flat-gitignore';
-// @ts-expect-error Currently does not include a type-declaration file
-import eslintConfigPrettier from 'eslint-config-prettier';
+import eslintConfigPrettier from 'eslint-config-prettier/flat';
 import deMorgan from 'eslint-plugin-de-morgan';
 import eslintPluginImportX from 'eslint-plugin-import-x';
 import jsdoc from 'eslint-plugin-jsdoc';
