@@ -61,7 +61,7 @@
     "eslint-typegen": "2.0.0",
     "jiti": "2.4.2",
     "knip": "5.45.0",
-    "lefthook": "1.11.2",
+    "lefthook": "1.11.3",
     "prettier": "3.5.3",
     "syncpack": "13.0.3",
     "tsx": "4.19.3",
