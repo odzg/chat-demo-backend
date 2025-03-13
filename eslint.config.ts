@@ -97,7 +97,7 @@ export default typegen(
     perfectionist.configs['recommended-natural'],
     eslintPluginYml.configs['flat/recommended'],
     eslintPluginYml.configs['flat/prettier'],
-    nodePlugin.configs['flat/recommended-script'],
+    nodePlugin.configs['flat/recommended'],
     eslintPluginImportX.flatConfigs.recommended,
     eslintPluginImportX.flatConfigs.typescript,
     eslintPluginUnicorn.configs.recommended,
