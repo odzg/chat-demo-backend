@@ -11,7 +11,7 @@ import eslintPluginJsonSchemaValidator from 'eslint-plugin-json-schema-validator
 import eslintPluginJsonc from 'eslint-plugin-jsonc';
 import eslintPluginMath from 'eslint-plugin-math';
 import nodePlugin from 'eslint-plugin-n';
-import packageJson from 'eslint-plugin-package-json/configs/recommended';
+import packageJson from 'eslint-plugin-package-json';
 import perfectionist from 'eslint-plugin-perfectionist';
 // @ts-expect-error Currently does not include a type-declaration file
 import pluginPromise from 'eslint-plugin-promise';
@@ -105,7 +105,7 @@ export default typegen(
     regexpPlugin.configs['flat/recommended'],
     deMorgan.configs.recommended,
     eslintPluginMath.configs.recommended,
-    packageJson,
+    packageJson.configs.recommended,
     {
       rules: {
         '@eslint-community/eslint-comments/require-description': 'error',
