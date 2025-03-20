@@ -5,14 +5,10 @@
     ".dependency-cruiser.js"
   ],
   "ignoreDependencies": [
-    // Used by `lefthook` and may be ran manually
+    // Ran by `lefthook`, and potentially also by developer/automation
     "@commitlint/cli",
 
-    // May be ran manually
-    "@commitlint/prompt-cli",
-
-    // Used implicitly by `eslint-plugin-import-x`
-    // Required as `@fastify/websocket` depends on `ws`
+    // Type-definitions for `ws`, upon which `@fastify/websocket` depends on
     "@types/ws",
 
     // Used implicitly by `eslint-plugin-import-x`

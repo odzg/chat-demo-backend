@@ -8,7 +8,8 @@
     "#*": "./src/*"
   },
   "scripts": {
-    "dev": "node --watch --env-file=.env --experimental-strip-types=true --experimental-transform-types=true ./src/index.ts",
+    "commit": "commit",
+    "dev": "node --watch --env-file=.env.development --experimental-strip-types=true --experimental-transform-types=true ./src/index.ts",
     "format": "prettier --write --cache .",
     "format:check": "prettier --check --cache .",
     "lint": "eslint --max-warnings=0 .",
