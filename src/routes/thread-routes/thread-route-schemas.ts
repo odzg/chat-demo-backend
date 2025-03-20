@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
-import { Thread, ThreadMessage, ThreadUser } from '#schemas/thread-schemas.js';
-import { User } from '#schemas/user-schemas.js';
+import { Thread, ThreadMessage, ThreadUser } from '#schemas/thread-schemas.ts';
+import { User } from '#schemas/user-schemas.ts';
 
 export const GetThreadsResponse = Thread.and(
   z.object({
@@ -93,4 +93,4 @@ export {
   ThreadMessage as CreateThreadMessageResponse,
   ThreadMessage as GetThreadMessageResponse,
   Thread as GetThreadResponse,
-} from '#schemas/thread-schemas.js';
+} from '#schemas/thread-schemas.ts';

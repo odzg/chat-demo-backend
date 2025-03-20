@@ -6,12 +6,12 @@ import { UTCDateMini } from '@date-fns/utc';
 import type {
   CreateThreadMessageSchema,
   UpdateThreadUserEventSchema,
-} from '#schemas/event-schemas.js';
-import type { ThreadMessage } from '#schemas/thread-schemas.js';
+} from '#schemas/event-schemas.ts';
+import type { ThreadMessage } from '#schemas/thread-schemas.ts';
 
-import { database } from '#database.js';
-import { EventType } from '#enums/event-type.js';
-import { User } from '#schemas/user-schemas.js';
+import { database } from '#database.ts';
+import { EventType } from '#enums/event-type.ts';
+import { User } from '#schemas/user-schemas.ts';
 
 import {
   CreateThreadMessageRequestBody,

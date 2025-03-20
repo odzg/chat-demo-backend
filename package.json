@@ -5,18 +5,14 @@
   "private": true,
   "type": "module",
   "imports": {
-    "#*": {
-      "production": "./dist/*",
-      "default": "./src/*"
-    }
+    "#*": "./src/*"
   },
   "scripts": {
-    "build": "tsc -p tsconfig.build.json",
-    "dev": "tsx watch --env-file=.env ./src/index.ts",
+    "dev": "node --watch --env-file=.env --experimental-strip-types=true --experimental-transform-types=true ./src/index.ts",
     "format": "prettier --write --cache .",
     "format:check": "prettier --check --cache .",
     "lint": "eslint --max-warnings=0 .",
-    "start": "node --env-file=.env --conditions=production ./dist/index.js",
+    "start": "node --experimental-strip-types=true --experimental-transform-types=true ./src/index.ts",
     "typecheck": "tsc"
   },
   "dependencies": {
@@ -64,7 +60,6 @@
     "lefthook": "1.11.3",
     "prettier": "3.5.3",
     "syncpack": "13.0.3",
-    "tsx": "4.19.3",
     "type-fest": "4.37.0",
     "typescript": "5.8.2",
     "typescript-eslint": "8.27.0"
