@@ -4,9 +4,6 @@
     // Config file of `dependency-cruiser`
     ".dependency-cruiser.js"
   ],
-  "eslint": {
-    "entry": "eslint.config.ts"
-  },
   "ignoreDependencies": [
     // Used by `lefthook` and may be ran manually
     "@commitlint/cli",
