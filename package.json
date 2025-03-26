@@ -13,6 +13,7 @@
     "format": "prettier --write --cache .",
     "format:check": "prettier --check --cache .",
     "lint": "eslint --max-warnings=0 .",
+    "postinstall": "lefthook install",
     "start": "node --experimental-strip-types=true --experimental-transform-types=true ./src/index.ts",
     "typecheck": "tsc"
   },
