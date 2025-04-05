@@ -12,7 +12,7 @@
     "dev": "node --watch --env-file=.env.development --experimental-strip-types=true --experimental-transform-types=true ./src/index.ts",
     "format": "prettier --write --cache .",
     "format:check": "prettier --check --cache .",
-    "lint": "eslint --max-warnings=0 .",
+    "lint": "pnpm --node-options=--experimental-strip-types eslint --max-warnings=0 --flag=unstable_native_nodejs_ts_config .",
     "start": "node --experimental-strip-types=true --experimental-transform-types=true ./src/index.ts",
     "typecheck": "tsc"
   },
@@ -56,7 +56,6 @@
     "eslint-plugin-unicorn": "58.0.0",
     "eslint-plugin-yml": "1.17.0",
     "eslint-typegen": "2.1.0",
-    "jiti": "2.4.2",
     "knip": "5.46.5",
     "lefthook": "1.11.6",
     "prettier": "3.5.3",
