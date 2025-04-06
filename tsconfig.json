@@ -5,6 +5,7 @@
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
     "checkJs": true,
+    "erasableSyntaxOnly": true,
     "exactOptionalPropertyTypes": true,
     "incremental": true,
     "lib": ["ESNext"],
