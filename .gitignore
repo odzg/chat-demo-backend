@@ -1,6 +1,6 @@
 # Auto-generated
-eslint-typegen.d.ts
 *.tsbuildinfo
+eslint-typegen.d.ts
 
 # IDEs
 .idea
