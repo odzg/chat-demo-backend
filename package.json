@@ -9,6 +9,7 @@
   },
   "scripts": {
     "commit": "commit",
+    "commitlint": "commitlint",
     "dev": "node --watch --env-file=.env.development --experimental-strip-types=true --experimental-transform-types=true ./src/index.ts",
     "format": "prettier --write --cache .",
     "format:check": "prettier --check --cache .",

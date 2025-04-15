@@ -5,9 +5,6 @@
     ".dependency-cruiser.js"
   ],
   "ignoreDependencies": [
-    // Ran by `lefthook`, and potentially also by developer/automation
-    "@commitlint/cli",
-
     // Type-definitions for `ws`, upon which `@fastify/websocket` depends on
     "@types/ws",
 
