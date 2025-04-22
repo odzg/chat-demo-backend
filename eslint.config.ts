@@ -119,24 +119,7 @@ export default typegen(
         'jsonc/sort-keys': 'error',
         'n/no-missing-import': 'off', // This is already enforced either by TypeScript or by `import-x/no-unresolved`
         'no-console': ['error', { allow: ['error'] }],
-        'perfectionist/sort-imports': [
-          'error',
-          {
-            groups: [
-              'type',
-              'builtin',
-              'external',
-              'internal-type',
-              'internal',
-              ['parent-type', 'sibling-type', 'index-type'],
-              ['parent', 'sibling', 'index'],
-              'object',
-              'unknown',
-            ],
-            internalPattern: ['^#'],
-            newlinesBetween: 'always',
-          },
-        ],
+        'perfectionist/sort-imports': ['error', { internalPattern: ['^#'] }],
         'security/detect-object-injection': 'off', // Too restrictive
         'unicorn/no-null': 'off', // Too restrictive
         'unicorn/prevent-abbreviations': [
