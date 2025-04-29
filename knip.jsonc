@@ -3,6 +3,9 @@
   "entry": [
     // Config file of `dependency-cruiser`
     ".dependency-cruiser.js",
+
+    // Type declaration files
+    "@types/**/*.ts",
   ],
   "ignoreDependencies": [
     // Type-definitions for `ws`, upon which `@fastify/websocket` depends on
