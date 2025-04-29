@@ -11,4 +11,5 @@
     // Used implicitly by `eslint-plugin-import-x`
     "eslint-import-resolver-typescript",
   ],
+  "treatConfigHintsAsErrors": true,
 }
