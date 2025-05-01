@@ -14,7 +14,7 @@
     "dev": "node --watch --env-file=.env.development --experimental-strip-types=true --experimental-transform-types=true ./src/index.ts",
     "format": "prettier --write --cache .",
     "format:check": "prettier --check --cache .",
-    "lint": "pnpm --node-options=--experimental-strip-types eslint --max-warnings=0 --flag=unstable_native_nodejs_ts_config .",
+    "lint": "pnpm --node-options=--experimental-strip-types=true eslint --max-warnings=0 --flag=unstable_native_nodejs_ts_config .",
     "start": "node --experimental-strip-types=true --experimental-transform-types=true ./src/index.ts",
     "typecheck": "tsc"
   },
