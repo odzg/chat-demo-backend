@@ -62,7 +62,7 @@
     "lefthook": "1.11.12",
     "prettier": "3.5.3",
     "syncpack": "13.0.4",
-    "type-fest": "4.40.1",
+    "type-fest": "4.41.0",
     "typescript": "5.8.3",
     "typescript-eslint": "8.32.0"
   },
