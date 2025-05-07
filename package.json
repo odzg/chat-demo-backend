@@ -37,7 +37,7 @@
     "@eslint/markdown": "6.4.0",
     "@types/node": "22.15.15",
     "@types/ws": "8.18.1",
-    "dependency-cruiser": "16.10.1",
+    "dependency-cruiser": "16.10.2",
     "eslint": "9.26.0",
     "eslint-config-flat-gitignore": "2.1.0",
     "eslint-config-prettier": "10.1.3",
