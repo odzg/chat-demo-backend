@@ -1,9 +1,6 @@
 {
   "$schema": "https://unpkg.com/knip@5/schema-jsonc.json",
   "entry": [
-    // Config file of `dependency-cruiser`
-    ".dependency-cruiser.js",
-
     // Type declaration files
     "@types/**/*.ts",
   ],
