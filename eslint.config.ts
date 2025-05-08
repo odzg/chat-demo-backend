@@ -11,7 +11,7 @@ import eslintPluginJsonSchemaValidator from 'eslint-plugin-json-schema-validator
 import eslintPluginJsonc from 'eslint-plugin-jsonc';
 import eslintPluginMath from 'eslint-plugin-math';
 import nodePlugin from 'eslint-plugin-n';
-import packageJson from 'eslint-plugin-package-json';
+import packageJsonPlugin from 'eslint-plugin-package-json';
 import perfectionist from 'eslint-plugin-perfectionist';
 // @ts-expect-error Currently does not include a type-declaration file
 import pluginPromise from 'eslint-plugin-promise';
@@ -25,8 +25,13 @@ import typegen from 'eslint-typegen';
 import { defineConfig, globalIgnores } from 'eslint/config';
 import tseslint, { type ConfigArray } from 'typescript-eslint';
 
+import packageJson from './package.json' with { type: 'json' };
+
 const GLOB_JS = '**/*.?([cm])js';
+const GLOB_PACKAGE_JSON = '**/package.json';
 const GLOB_TS = '**/*.?([cm])ts';
+
+const { name: PROJECT_NAME } = packageJson;
 
 export default typegen(
   defineConfig([
@@ -39,10 +44,17 @@ export default typegen(
       '!.dependency-cruiser.js',
       '!.vscode',
     ]),
-    js.configs.recommended,
+    {
+      extends: ['js/recommended'],
+      files: [GLOB_JS, GLOB_TS],
+      name: `${PROJECT_NAME}/javascript`,
+      plugins: { js },
+    },
     {
       extends: [
+        // @ts-expect-error Config type is currently incompatible with official eslint `Linter.Config` type
         tseslint.configs.strictTypeChecked,
+        // @ts-expect-error Config type is currently incompatible with official eslint `Linter.Config` type
         tseslint.configs.stylisticTypeChecked,
       ],
       files: [GLOB_JS, GLOB_TS],
@@ -52,6 +64,7 @@ export default typegen(
           tsconfigRootDir: import.meta.dirname,
         },
       } satisfies ConfigArray[number]['languageOptions'],
+      name: `${PROJECT_NAME}/typescript`,
       rules: {
         '@typescript-eslint/array-type': ['error', { default: 'generic' }],
         '@typescript-eslint/consistent-type-imports': [
@@ -73,46 +86,100 @@ export default typegen(
     {
       extends: [jsdoc.configs['flat/recommended-typescript-error']],
       files: [GLOB_TS],
+      name: `${PROJECT_NAME}/jsdoc-typescript`,
     },
     {
       extends: [jsdoc.configs['flat/recommended-typescript-flavor-error']],
       files: [GLOB_JS],
+      name: `${PROJECT_NAME}/jsdoc-javascript`,
     },
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- No type declaration
-    comments.recommended,
-    eslintPluginJsonc.configs['flat/recommended-with-jsonc'],
-    eslintPluginJsonc.configs['flat/prettier'],
-    eslintPluginJsonSchemaValidator.configs['flat/recommended'],
-    markdown.configs.recommended,
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- No type declaration
-    pluginSecurity.configs.recommended,
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- No type declaration
-    pluginPromise.configs['flat/recommended'],
-    perfectionist.configs['recommended-natural'],
-    eslintPluginYml.configs['flat/recommended'],
-    eslintPluginYml.configs['flat/prettier'],
-    nodePlugin.configs['flat/recommended'],
-    eslintPluginImportX.flatConfigs.recommended,
-    eslintPluginImportX.flatConfigs.typescript,
-    eslintPluginUnicorn.configs.recommended,
-    sonarjs.configs.recommended,
-    regexpPlugin.configs['flat/recommended'],
-    deMorgan.configs.recommended,
-    eslintPluginMath.configs.recommended,
-    packageJson.configs.recommended,
     {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access -- No type declaration
+      extends: [comments.recommended],
+      name: `${PROJECT_NAME}/comments`,
       rules: {
         '@eslint-community/eslint-comments/require-description': 'error',
+      },
+    },
+    {
+      extends: [
+        // @ts-expect-error Config type is currently incompatible with official eslint `Linter.Config` type
+        eslintPluginJsonc.configs['flat/recommended-with-jsonc'],
+        // @ts-expect-error Config type is currently incompatible with official eslint `Linter.Config` type
+        eslintPluginJsonc.configs['flat/prettier'],
+        {
+          ignores: [GLOB_PACKAGE_JSON],
+          name: `${PROJECT_NAME}/json/sort-keys`,
+          rules: {
+            'jsonc/sort-keys': 'error',
+          },
+        },
+      ],
+      name: `${PROJECT_NAME}/json`,
+    },
+    {
+      extends: [eslintPluginJsonSchemaValidator.configs['flat/recommended']],
+      name: `${PROJECT_NAME}/json-schema-validator`,
+    },
+    {
+      extends: [markdown.configs.recommended],
+      name: `${PROJECT_NAME}/markdown`,
+    },
+    {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- No type declaration
+      extends: [
+        nodePlugin.configs['flat/recommended'],
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- No type declaration
+        pluginSecurity.configs.recommended,
+      ],
+      name: `${PROJECT_NAME}/node`,
+      rules: {
+        'n/no-missing-import': 'off', // This is already enforced either by TypeScript or by `import-x/no-unresolved`
+        'security/detect-object-injection': 'off', // Too restrictive
+      },
+    },
+    {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access -- No type declaration
+      extends: [pluginPromise.configs['flat/recommended']],
+      name: `${PROJECT_NAME}/promise`,
+    },
+    {
+      extends: [perfectionist.configs['recommended-natural']],
+      name: `${PROJECT_NAME}/perfectionist`,
+      rules: {
+        'perfectionist/sort-imports': ['error', { internalPattern: ['^#'] }],
+      },
+    },
+    {
+      extends: [
+        // @ts-expect-error Config type is currently incompatible with official eslint `Linter.Config` type
+        eslintPluginYml.configs['flat/recommended'],
+        // @ts-expect-error Config type is currently incompatible with official eslint `Linter.Config` type
+        eslintPluginYml.configs['flat/prettier'],
+      ],
+      name: `${PROJECT_NAME}/yaml`,
+    },
+    {
+      extends: [
+        // @ts-expect-error Config type is currently incompatible with official eslint `Linter.Config` type
+        eslintPluginImportX.flatConfigs.recommended,
+        // @ts-expect-error Config type is currently incompatible with official eslint `Linter.Config` type
+        eslintPluginImportX.flatConfigs.typescript,
+      ],
+      name: `${PROJECT_NAME}/import`,
+      rules: {
         'import-x/default': 'off', // TypeScript already enforces this
         'import-x/named': 'off', // TypeScript already enforces this
         'import-x/namespace': 'off', // TypeScript already enforces this
         'import-x/newline-after-import': 'error',
         'import-x/no-duplicates': ['error', { 'prefer-inline': true }],
         'import-x/no-named-as-default-member': 'off', // TypeScript already enforces this
-        'jsonc/sort-keys': 'error',
-        'n/no-missing-import': 'off', // This is already enforced either by TypeScript or by `import-x/no-unresolved`
-        'perfectionist/sort-imports': ['error', { internalPattern: ['^#'] }],
-        'security/detect-object-injection': 'off', // Too restrictive
+      },
+    },
+    {
+      extends: [eslintPluginUnicorn.configs.recommended],
+      name: `${PROJECT_NAME}/unicorn`,
+      rules: {
         'unicorn/no-null': 'off', // Too restrictive
         'unicorn/prevent-abbreviations': [
           'error',
@@ -126,16 +193,34 @@ export default typegen(
       },
     },
     {
-      files: ['package.json'],
-      rules: {
-        'jsonc/sort-keys': 'off', // Sorting of keys within `package.json` is handled by `eslint-plugin-package-json`
-      },
+      extends: [sonarjs.configs.recommended],
+      name: `${PROJECT_NAME}/sonarjs`,
     },
-    eslintConfigPrettier,
+    {
+      extends: [regexpPlugin.configs['flat/recommended']],
+      name: `${PROJECT_NAME}/regexp`,
+    },
+    {
+      extends: [deMorgan.configs.recommended],
+      name: `${PROJECT_NAME}/demorgan`,
+    },
+    {
+      extends: [eslintPluginMath.configs.recommended],
+      name: `${PROJECT_NAME}/math`,
+    },
+    {
+      extends: [packageJsonPlugin.configs.recommended],
+      name: `${PROJECT_NAME}/package-json`,
+    },
     {
       linterOptions: {
         reportUnusedInlineConfigs: 'error',
       },
+      name: `${PROJECT_NAME}/linter-options`,
+    },
+    {
+      extends: [eslintConfigPrettier],
+      name: `${PROJECT_NAME}/prettier`,
     },
   ]),
 );
