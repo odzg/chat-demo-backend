@@ -10,6 +10,7 @@ import jsdoc from 'eslint-plugin-jsdoc';
 import eslintPluginJsonSchemaValidator from 'eslint-plugin-json-schema-validator';
 import eslintPluginJsonc from 'eslint-plugin-jsonc';
 import eslintPluginMath from 'eslint-plugin-math';
+import moduleInterop from 'eslint-plugin-module-interop';
 import nodePlugin from 'eslint-plugin-n';
 import packageJsonPlugin from 'eslint-plugin-package-json';
 import perfectionist from 'eslint-plugin-perfectionist';
@@ -207,6 +208,10 @@ export default typegen(
     {
       extends: [eslintPluginMath.configs.recommended],
       name: `${PROJECT_NAME}/math`,
+    },
+    {
+      extends: [moduleInterop.configs.recommended],
+      name: `${PROJECT_NAME}/module-interop`,
     },
     {
       extends: [packageJsonPlugin.configs.recommended],
