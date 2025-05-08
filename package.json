@@ -28,10 +28,10 @@
     "zod": "3.24.4"
   },
   "devDependencies": {
-    "@commitlint/cli": "19.8.0",
-    "@commitlint/config-conventional": "19.8.0",
-    "@commitlint/prompt-cli": "19.8.0",
-    "@commitlint/types": "19.8.0",
+    "@commitlint/cli": "19.8.1",
+    "@commitlint/config-conventional": "19.8.1",
+    "@commitlint/prompt-cli": "19.8.1",
+    "@commitlint/types": "19.8.1",
     "@eslint-community/eslint-plugin-eslint-comments": "4.5.0",
     "@eslint/js": "9.26.0",
     "@eslint/markdown": "6.4.0",
