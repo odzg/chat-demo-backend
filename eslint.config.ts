@@ -148,7 +148,10 @@ export default typegen(
       extends: [perfectionist.configs['recommended-natural']],
       name: `${PROJECT_NAME}/perfectionist`,
       rules: {
-        'perfectionist/sort-imports': ['error', { internalPattern: ['^#'] }],
+        'perfectionist/sort-imports': [
+          'error',
+          { tsconfigRootDir: import.meta.dirname },
+        ],
       },
     },
     {
