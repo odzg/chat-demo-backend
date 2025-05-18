@@ -25,7 +25,6 @@ export default {
           '(^|/)[.][^/]+[.](?:js|cjs|mjs|ts|cts|mts|json)$', // dot files
           '[.]d[.]ts$', // TypeScript declaration files
           '(^|/)tsconfig[.]json$', // TypeScript config
-          '(^|/)(?:prettier)[.]config[.](?:js|cjs|mjs|ts|cts|mts|json)$', // other configs
         ],
       },
       name: 'no-orphans',
@@ -180,6 +179,8 @@ export default {
     },
   ],
   options: {
+    detectJSDocImports: true,
+
     /* Which modules not to follow further when encountered */
     doNotFollow: {
       /* path: an array of regular expressions in strings to match against */
