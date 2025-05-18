@@ -25,7 +25,7 @@ export default {
           '(^|/)[.][^/]+[.](?:js|cjs|mjs|ts|cts|mts|json)$', // dot files
           '[.]d[.]ts$', // TypeScript declaration files
           '(^|/)tsconfig[.]json$', // TypeScript config
-          '(^|/)(?:babel|webpack|prettier)[.]config[.](?:js|cjs|mjs|ts|cts|mts|json)$', // other configs
+          '(^|/)(?:prettier)[.]config[.](?:js|cjs|mjs|ts|cts|mts|json)$', // other configs
         ],
       },
       name: 'no-orphans',
