@@ -5,11 +5,8 @@
     "@types/**/*.ts",
   ],
   "ignoreDependencies": [
-    // Type-definitions for `ws`, upon which `@fastify/websocket` depends on
+    // Type-definitions for `ws`, which `@fastify/websocket` implicitly depends on
     "@types/ws",
-
-    // Used implicitly by `eslint-plugin-import-x`
-    "eslint-import-resolver-typescript",
   ],
   "treatConfigHintsAsErrors": true,
 }
