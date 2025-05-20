@@ -1,12 +1,7 @@
 {
   "$schema": "https://unpkg.com/knip@5/schema-jsonc.json",
-  "entry": [
+  "entry":
     // Type declaration files
     "@types/**/*.ts",
-  ],
-  "ignoreDependencies": [
-    // Type-definitions for `ws`, which `@fastify/websocket` implicitly depends on
-    "@types/ws",
-  ],
   "treatConfigHintsAsErrors": true,
 }
