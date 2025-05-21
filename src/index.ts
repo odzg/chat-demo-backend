@@ -1,5 +1,4 @@
 import { fastifyCors } from '@fastify/cors';
-import { fastifyJwt } from '@fastify/jwt';
 import { fastifyWebsocket } from '@fastify/websocket';
 import Fastify from 'fastify';
 import {
@@ -8,6 +7,7 @@ import {
 } from 'fastify-type-provider-zod';
 
 import { env } from './constants/env.ts';
+import { fastifyJwt } from './plugins/jwt.ts';
 import { routes } from './routes/index.ts';
 
 const fastify = Fastify({ logger: true });

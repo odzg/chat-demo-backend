@@ -1,7 +1,4 @@
 {
   "$schema": "https://unpkg.com/knip@5/schema-jsonc.json",
-  "entry":
-    // Type declaration files
-    "@types/**/*.ts",
   "treatConfigHintsAsErrors": true,
 }
