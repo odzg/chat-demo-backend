@@ -10,7 +10,6 @@
     "incremental": true,
     "lib": ["ESNext"],
     "module": "NodeNext",
-    "moduleDetection": "force",
     "noEmit": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitOverride": true,
