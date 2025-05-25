@@ -20,7 +20,7 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "ESNext",
-    "types": ["ws"],
+    "types": ["node", "ws"],
     "verbatimModuleSyntax": true
   },
   "include": ["**/*", ".dependency-cruiser.js"]
