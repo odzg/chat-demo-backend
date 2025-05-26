@@ -39,10 +39,10 @@ export default typegen(
   defineConfig([
     gitignore(),
     globalIgnores([
-      /* Auto-generated files/directories */
+      /* Auto-generated files/directories that are not included in .gitignore */
       'pnpm-lock.yaml',
 
-      /* Specific dot-files/dot-directories which should not be auto-ignored */
+      /* Dot files/directories which should NOT be ignored */
       '!.dependency-cruiser.js',
       '!.vscode',
     ]),
