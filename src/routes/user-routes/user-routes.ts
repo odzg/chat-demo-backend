@@ -1,5 +1,4 @@
-import type { FastifyPluginCallback } from 'fastify';
-import type { ZodTypeProvider } from 'fastify-type-provider-zod';
+import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod';
 
 import { UTCDateMini } from '@date-fns/utc';
 
@@ -29,7 +28,7 @@ const USERS_ROUTE = '/users';
 const USER_ROUTE = `${USERS_ROUTE}/:userId`;
 const MY_USER_ROUTE = `${USERS_ROUTE}/me`;
 
-export const userRoutes: FastifyPluginCallback = (fastify, _options, done) => {
+export const userRoutes: FastifyPluginAsyncZod = (fastify) => {
   fastify.addHook('onRequest', async (request, reply) => {
     try {
       await request.jwtVerify();
@@ -48,7 +47,7 @@ export const userRoutes: FastifyPluginCallback = (fastify, _options, done) => {
     }
   });
 
-  fastify.withTypeProvider<ZodTypeProvider>().get(
+  fastify.get(
     USER_ROUTE,
     {
       schema: {
@@ -70,11 +69,11 @@ export const userRoutes: FastifyPluginCallback = (fastify, _options, done) => {
         });
       }
 
-      return reply.send(user);
+      return user;
     },
   );
 
-  fastify.withTypeProvider<ZodTypeProvider>().get(
+  fastify.get(
     MY_USER_ROUTE,
     {
       schema: {
@@ -95,11 +94,11 @@ export const userRoutes: FastifyPluginCallback = (fastify, _options, done) => {
         });
       }
 
-      return reply.send(user);
+      return user;
     },
   );
 
-  fastify.withTypeProvider<ZodTypeProvider>().post(
+  fastify.post(
     USERS_ROUTE,
     {
       schema: {
@@ -135,11 +134,11 @@ export const userRoutes: FastifyPluginCallback = (fastify, _options, done) => {
 
       database.users.push(newUser);
 
-      return reply.send(newUser);
+      return newUser;
     },
   );
 
-  fastify.withTypeProvider<ZodTypeProvider>().put(
+  fastify.put(
     USER_ROUTE,
     {
       schema: {
@@ -166,11 +165,11 @@ export const userRoutes: FastifyPluginCallback = (fastify, _options, done) => {
 
       user.updatedAt = new UTCDateMini().toISOString();
 
-      return reply.send(user);
+      return user;
     },
   );
 
-  fastify.withTypeProvider<ZodTypeProvider>().delete(
+  fastify.delete(
     USER_ROUTE,
     {
       schema: {
@@ -197,9 +196,9 @@ export const userRoutes: FastifyPluginCallback = (fastify, _options, done) => {
       user.deletedAt = newDate.toISOString();
       user.updatedAt = newDate.toISOString();
 
-      return reply.send(user);
+      return user;
     },
   );
 
-  done();
+  return Promise.resolve();
 };

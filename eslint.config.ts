@@ -89,11 +89,17 @@ export default typegen(
       extends: [jsdoc.configs['flat/recommended-typescript-error']],
       files: [GLOB_TS],
       name: `${PROJECT_NAME}/jsdoc-typescript`,
+      rules: {
+        'jsdoc/require-jsdoc': 'off', // Too restrictive
+      },
     },
     {
       extends: [jsdoc.configs['flat/recommended-typescript-flavor-error']],
       files: [GLOB_JS],
       name: `${PROJECT_NAME}/jsdoc-javascript`,
+      rules: {
+        'jsdoc/require-jsdoc': 'off', // Too restrictive
+      },
     },
     {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access -- No type declaration

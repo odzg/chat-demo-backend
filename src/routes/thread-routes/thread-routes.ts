@@ -1,5 +1,4 @@
-import type { FastifyPluginCallback } from 'fastify';
-import type { ZodTypeProvider } from 'fastify-type-provider-zod';
+import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod';
 
 import { UTCDateMini } from '@date-fns/utc';
 
@@ -47,11 +46,7 @@ const THREAD_MESSAGE_ROUTE = `${THREAD_MESSAGES_ROUTE}/:messageId`;
 const THREAD_USERS_ROUTE = `${THREAD_ROUTE}/users`;
 const THREAD_USER_ROUTE = `${THREAD_USERS_ROUTE}/:threadUserId`;
 
-export const threadRoutes: FastifyPluginCallback = (
-  fastify,
-  _options,
-  done,
-) => {
+export const threadRoutes: FastifyPluginAsyncZod = (fastify) => {
   fastify.addHook('onRequest', async (request, reply) => {
     try {
       await request.jwtVerify();
@@ -70,7 +65,7 @@ export const threadRoutes: FastifyPluginCallback = (
     }
   });
 
-  fastify.withTypeProvider<ZodTypeProvider>().get(
+  fastify.get(
     THREADS_ROUTE,
     {
       schema: {
@@ -101,28 +96,28 @@ export const threadRoutes: FastifyPluginCallback = (
         return isThreadAssociatedWithUser;
       });
 
-      return reply.send(
-        threads.map((thread) => ({
-          ...thread,
-          lastMessage:
-            database.threadMessages.findLast(
-              ({ threadId }) => threadId === thread.id,
-            ) ?? null,
-          threadUsers: database.threadUsers
-            .filter(({ threadId }) => threadId === thread.id)
-            .map((threadUser) => ({
-              ...threadUser,
-              user: User.parse(
-                // eslint-disable-next-line sonarjs/no-nested-functions -- Should refector
-                database.users.find(({ id }) => id === threadUser.userId),
-              ),
-            })),
-        })),
-      );
+      function getUserByThreadUser(threadUser: { userId: number }) {
+        const user = database.users.find(({ id }) => id === threadUser.userId);
+        return User.parse(user);
+      }
+
+      return threads.map((thread) => ({
+        ...thread,
+        lastMessage:
+          database.threadMessages.findLast(
+            ({ threadId }) => threadId === thread.id,
+          ) ?? null,
+        threadUsers: database.threadUsers
+          .filter(({ threadId }) => threadId === thread.id)
+          .map((threadUser) => ({
+            ...threadUser,
+            user: getUserByThreadUser(threadUser),
+          })),
+      }));
     },
   );
 
-  fastify.withTypeProvider<ZodTypeProvider>().get(
+  fastify.get(
     THREAD_ROUTE,
     {
       schema: {
@@ -144,11 +139,11 @@ export const threadRoutes: FastifyPluginCallback = (
         });
       }
 
-      return reply.send(thread);
+      return thread;
     },
   );
 
-  fastify.withTypeProvider<ZodTypeProvider>().get(
+  fastify.get(
     THREAD_MESSAGES_ROUTE,
     {
       schema: {
@@ -174,11 +169,11 @@ export const threadRoutes: FastifyPluginCallback = (
         ({ deletedAt, threadId }) => !deletedAt && threadId === thread.id,
       );
 
-      return reply.send(threadMessages);
+      return threadMessages;
     },
   );
 
-  fastify.withTypeProvider<ZodTypeProvider>().get(
+  fastify.get(
     THREAD_MESSAGE_ROUTE,
     {
       schema: {
@@ -213,11 +208,11 @@ export const threadRoutes: FastifyPluginCallback = (
         });
       }
 
-      return reply.send(threadMessage);
+      return threadMessage;
     },
   );
 
-  fastify.withTypeProvider<ZodTypeProvider>().post(
+  fastify.post(
     THREAD_MESSAGES_ROUTE,
     {
       schema: {
@@ -228,7 +223,7 @@ export const threadRoutes: FastifyPluginCallback = (
         },
       },
     },
-    async ({ body, params }, reply) => {
+    ({ body, params }) => {
       const latestThreadMessage = database.threadMessages.at(-1);
 
       const newDate = new UTCDateMini().toISOString();
@@ -255,11 +250,11 @@ export const threadRoutes: FastifyPluginCallback = (
         }
       }
 
-      return reply.send(newThreadMessage);
+      return newThreadMessage;
     },
   );
 
-  fastify.withTypeProvider<ZodTypeProvider>().get(
+  fastify.get(
     THREAD_USERS_ROUTE,
     {
       schema: {
@@ -285,18 +280,16 @@ export const threadRoutes: FastifyPluginCallback = (
         ({ deletedAt, threadId }) => !deletedAt && threadId === thread.id,
       );
 
-      return reply.send(
-        threadUsers.map((threadUser) => ({
-          ...threadUser,
-          user: User.parse(
-            database.users.find(({ id }) => id === threadUser.userId),
-          ),
-        })),
-      );
+      return threadUsers.map((threadUser) => ({
+        ...threadUser,
+        user: User.parse(
+          database.users.find(({ id }) => id === threadUser.userId),
+        ),
+      }));
     },
   );
 
-  fastify.withTypeProvider<ZodTypeProvider>().get(
+  fastify.get(
     THREAD_USER_ROUTE,
     {
       schema: {
@@ -332,16 +325,16 @@ export const threadRoutes: FastifyPluginCallback = (
         });
       }
 
-      return reply.send({
+      return {
         ...threadUser,
         user: User.parse(
           database.users.find(({ id }) => id === threadUser.userId),
         ),
-      });
+      };
     },
   );
 
-  fastify.withTypeProvider<ZodTypeProvider>().put(
+  fastify.put(
     THREAD_USER_ROUTE,
     {
       schema: {
@@ -393,14 +386,14 @@ export const threadRoutes: FastifyPluginCallback = (
         }
       }
 
-      return reply.send({
+      return {
         ...threadUser,
         user: User.parse(
           database.users.find(({ id }) => id === threadUser.userId),
         ),
-      });
+      };
     },
   );
 
-  done();
+  return Promise.resolve();
 };

@@ -1,5 +1,4 @@
-import type { FastifyPluginCallback } from 'fastify';
-import type { ZodTypeProvider } from 'fastify-type-provider-zod';
+import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod';
 
 import { database } from '#database.ts';
 
@@ -11,8 +10,8 @@ import {
 
 const SIGN_IN_ROUTE = '/sign-in';
 
-export const authRoutes: FastifyPluginCallback = (fastify, _options, done) => {
-  fastify.withTypeProvider<ZodTypeProvider>().post(
+export const authRoutes: FastifyPluginAsyncZod = (fastify) => {
+  fastify.post(
     SIGN_IN_ROUTE,
     {
       schema: {
@@ -45,12 +44,12 @@ export const authRoutes: FastifyPluginCallback = (fastify, _options, done) => {
         id: user.id,
       });
 
-      return reply.send({
+      return {
         token,
         user,
-      });
+      };
     },
   );
 
-  done();
+  return Promise.resolve();
 };

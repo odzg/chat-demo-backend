@@ -1,13 +1,9 @@
-import type { FastifyPluginCallback } from 'fastify';
+import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod';
 
 const WEBSOCKET_PATH = '/websocket';
 
-export const websocketRoutes: FastifyPluginCallback = (
-  fastify,
-  _options,
-  done,
-) => {
+export const websocketRoutes: FastifyPluginAsyncZod = (fastify) => {
   fastify.get(WEBSOCKET_PATH, { websocket: true }, () => null);
 
-  done();
+  return Promise.resolve();
 };
