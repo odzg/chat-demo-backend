@@ -1,0 +1,14 @@
+archi
+dbaeumer
+demorgan
+depcruise
+esbenp
+fghj
+fgvna
+jsons
+lefthook
+njsproj
+ntvs
+sonarjs
+syncpack
+typegen

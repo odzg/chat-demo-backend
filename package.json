@@ -9,6 +9,7 @@
     "#*": "./src/*"
   },
   "scripts": {
+    "check-spelling": "cspell --no-progress --show-context .",
     "commit": "commit",
     "commitlint": "commitlint",
     "dev": "node --watch --env-file=.env.development --experimental-strip-types=true --experimental-transform-types=true ./src/index.ts",
@@ -38,6 +39,7 @@
     "@eslint/markdown": "6.4.0",
     "@types/node": "22.15.24",
     "@types/ws": "8.18.1",
+    "cspell": "9.0.2",
     "dependency-cruiser": "16.10.2",
     "eslint": "9.27.0",
     "eslint-config-flat-gitignore": "2.1.0",

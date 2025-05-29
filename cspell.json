@@ -1,0 +1,15 @@
+{
+  "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
+  "dictionaries": ["@custom-dictionaries/tooling"],
+  "dictionaryDefinitions": [
+    {
+      "addWords": true,
+      "name": "@custom-dictionaries/tooling",
+      "path": "./dictionaries/tooling.txt"
+    }
+  ],
+  "enableGlobDot": true,
+  "ignorePaths": ["pnpm-lock.yaml", ".git"],
+  "useGitignore": true,
+  "version": "0.2"
+}
