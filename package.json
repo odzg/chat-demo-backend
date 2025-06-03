@@ -10,13 +10,13 @@
   },
   "scripts": {
     "check-spelling": "cspell --no-progress --show-context .",
-    "commit": "commit",
     "dev": "node --watch --env-file=.env.development --experimental-strip-types=true --experimental-transform-types=true ./src/index.ts",
     "format": "prettier --write --cache .",
     "format:check": "prettier --check --cache .",
+    "git-commit": "commit",
     "lint": "pnpm --node-options=--experimental-strip-types=true eslint --max-warnings=0 --flag=unstable_native_nodejs_ts_config .",
-    "lint:commit": "commitlint --from=HEAD~1 --to=HEAD --verbose",
-    "lint:depcruise": "depcruise .",
+    "lint:commit-message": "commitlint --edit && cspell --no-progress --no-summary .git/COMMIT_EDITMSG",
+    "lint:dependency-cruiser": "depcruise .",
     "lint:syncpack": "syncpack lint",
     "start": "node --experimental-strip-types=true --experimental-transform-types=true ./src/index.ts",
     "typecheck": "tsc"

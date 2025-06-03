@@ -9,7 +9,13 @@
     }
   ],
   "enableGlobDot": true,
-  "ignorePaths": ["pnpm-lock.yaml", ".git"],
+  "ignorePaths": [
+    "pnpm-lock.yaml",
+
+    // Ignore all files in the .git directory except `COMMIT_EDITMSG`,
+    // so that commit messages can be checked using Git's "commit-msg" hook.
+    ".git/**/!(COMMIT_EDITMSG)"
+  ],
   "useGitignore": true,
   "version": "0.2"
 }
