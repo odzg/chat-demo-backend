@@ -7,6 +7,7 @@ esbenp
 fghj
 fgvna
 jsons
+knip
 lefthook
 njsproj
 ntvs

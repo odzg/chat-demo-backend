@@ -10,15 +10,15 @@
   },
   "scripts": {
     "check-spelling": "cspell --no-progress --show-context .",
-    "dev": "node --watch --env-file=.env.development --experimental-strip-types=true --experimental-transform-types=true ./src/index.ts",
+    "dev": "node --watch --env-file=.env.development --experimental-strip-types --experimental-transform-types=true ./src/index.ts",
     "format": "prettier --write --cache .",
     "format:check": "prettier --check --cache .",
     "git-commit": "commit",
-    "lint": "pnpm --node-options=--experimental-strip-types=true eslint --max-warnings=0 --flag=unstable_native_nodejs_ts_config .",
+    "lint": "pnpm --node-options=--experimental-strip-types eslint --max-warnings=0 --flag=unstable_native_nodejs_ts_config .",
     "lint:commit-message": "commitlint --edit && cspell --no-progress --no-summary .git/COMMIT_EDITMSG",
     "lint:dependency-cruiser": "depcruise .",
     "lint:syncpack": "syncpack lint",
-    "start": "node --experimental-strip-types=true --experimental-transform-types=true ./src/index.ts",
+    "start": "node --experimental-strip-types --experimental-transform-types=true ./src/index.ts",
     "typecheck": "tsc"
   },
   "dependencies": {
