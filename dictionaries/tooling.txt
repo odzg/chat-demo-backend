@@ -1,16 +1,12 @@
 archi
-COMMIT_EDITMSG
 dbaeumer
-demorgan
 depcruise
 esbenp
 fghj
 fgvna
 jsons
-knip
 lefthook
 njsproj
 ntvs
 sonarjs
 syncpack
-typegen
