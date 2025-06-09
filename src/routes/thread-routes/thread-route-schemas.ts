@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from 'zod/v4';
 
 import { Thread, ThreadMessage, ThreadUser } from '#schemas/thread-schemas.ts';
 import { User } from '#schemas/user-schemas.ts';

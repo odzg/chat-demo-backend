@@ -1,15 +1,15 @@
-import { z } from 'zod';
+import { z } from 'zod/v4';
 
 export const User = z.object({
-  createdAt: z.string().datetime(),
-  deletedAt: z.string().datetime().nullable(),
+  createdAt: z.iso.datetime(),
+  deletedAt: z.iso.datetime().nullable(),
   email: z.string(),
   firstName: z.string(),
   id: z.number(),
   lastName: z.string(),
   password: z.string().min(8),
   profilePictureUrl: z.string(),
-  updatedAt: z.string().datetime(),
+  updatedAt: z.iso.datetime(),
 });
 
 export interface User extends z.infer<typeof User> {}

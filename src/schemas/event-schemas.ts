@@ -1,4 +1,4 @@
-import { z, type ZodType } from 'zod';
+import { z, type ZodType } from 'zod/v4';
 
 import { EventType } from '#enums/event-type.ts';
 
@@ -6,7 +6,7 @@ import { ThreadMessage, ThreadUser } from './thread-schemas.ts';
 
 const BaseEventSchema = z.object({
   payload: z.unknown(),
-  type: z.nativeEnum(EventType),
+  type: z.enum(EventType),
 });
 
 interface BaseEventSchema extends z.infer<typeof BaseEventSchema> {}
