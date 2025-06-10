@@ -16,6 +16,7 @@
     // so that commit messages can be checked using Git's "commit-msg" hook.
     ".git/**/!(COMMIT_EDITMSG)"
   ],
+  "language": "en,en-GB",
   "useGitignore": true,
   "version": "0.2"
 }
