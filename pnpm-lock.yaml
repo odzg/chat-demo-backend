@@ -103,8 +103,8 @@ importers:
         specifier: 17.20.0
         version: 17.20.0(eslint@9.28.0(jiti@2.4.2))(typescript@5.8.3)
       eslint-plugin-package-json:
-        specifier: 0.38.0
-        version: 0.38.0(@types/estree@1.0.6)(eslint@9.28.0(jiti@2.4.2))(jsonc-eslint-parser@2.4.0)
+        specifier: 0.39.2
+        version: 0.39.2(@types/estree@1.0.6)(eslint@9.28.0(jiti@2.4.2))(jsonc-eslint-parser@2.4.0)
       eslint-plugin-perfectionist:
         specifier: 4.14.0
         version: 4.14.0(eslint@9.28.0(jiti@2.4.2))(typescript@5.8.3)
@@ -153,8 +153,8 @@ importers:
 
 packages:
 
-  '@altano/repository-tools@0.1.1':
-    resolution: {integrity: sha512-5vbUs2A98CC3g1AlOBdkBE0BMukkLjLIsMHAtuxg6Pt9dQXxYWdLKOf66v6c/vIqtNcgTMv0oGtddLdMuH9X6w==}
+  '@altano/repository-tools@1.0.1':
+    resolution: {integrity: sha512-/FFHQOMp5TZWplkDWbbLIjmANDr9H/FtqUm+hfJMK76OBut0Ht0cNfd0ZXd/6LXf4pWUTzvpgVjcin7EEHSznA==}
 
   '@apidevtools/json-schema-ref-parser@11.9.0':
     resolution: {integrity: sha512-8Q/r5mXLa8Rfyh6r4SgEEFJgISVN5cDNFlcfSWLgFn3odzQhTfHAqzI3hMGdcROViL+8NrDNVVFQtEUrYOksDg==}
@@ -1435,10 +1435,6 @@ packages:
     resolution: {integrity: sha512-Mc7QhQ8s+cLrnUfU/Ji94vG/r8M26m8f++vyres4ZoojaRDpZ1eSIh/EpzLNwlWuvzSZ3UbDFspjFvTDXe6e/g==}
     engines: {node: '>=12.20'}
 
-  detect-newline@3.1.0:
-    resolution: {integrity: sha512-TLz+x/vEXm/Y7P7wn1EJFNLxYpUD4TgMosxY6fAVJUnJMbupHBOncxyWUG9OpTaH9EBD7uFI5LfEgmMOc54DsA==}
-    engines: {node: '>=8'}
-
   detect-newline@4.0.1:
     resolution: {integrity: sha512-qE3Veg1YXzGHQhlA6jzebZN2qVf6NX+A7m7qlhCGG30dJixrAQhYOsJjsnBjJkCSmuOPpCk30145fr8FV0bzog==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
@@ -1667,8 +1663,8 @@ packages:
     peerDependencies:
       eslint: '>=8.23.0'
 
-  eslint-plugin-package-json@0.38.0:
-    resolution: {integrity: sha512-zHR6yvGB03FD2nFgwCeoYvbL5bIFpgJUBXRaDz8cJQz77/T/RKmubdSnbploPgZEQVcnJwuaoGKYuSpHC+8iUg==}
+  eslint-plugin-package-json@0.39.2:
+    resolution: {integrity: sha512-uvyMjUlzr0CKsmj7IfDK5s2RvFVei2KZRxr3WAycpFR+p22R957lZlGIcmwSuVoNmSq9/uk+jZMLqzS/TcYS1A==}
     engines: {node: ^=20.19.0 || >=22.12.0}
     peerDependencies:
       eslint: '>=8.0.0'
@@ -3444,7 +3440,7 @@ packages:
 
 snapshots:
 
-  '@altano/repository-tools@0.1.1': {}
+  '@altano/repository-tools@1.0.1': {}
 
   '@apidevtools/json-schema-ref-parser@11.9.0':
     dependencies:
@@ -4822,8 +4818,6 @@ snapshots:
 
   detect-indent@7.0.1: {}
 
-  detect-newline@3.1.0: {}
-
   detect-newline@4.0.1: {}
 
   devlop@1.1.0:
@@ -5147,11 +5141,11 @@ snapshots:
       - supports-color
       - typescript
 
-  eslint-plugin-package-json@0.38.0(@types/estree@1.0.6)(eslint@9.28.0(jiti@2.4.2))(jsonc-eslint-parser@2.4.0):
+  eslint-plugin-package-json@0.39.2(@types/estree@1.0.6)(eslint@9.28.0(jiti@2.4.2))(jsonc-eslint-parser@2.4.0):
     dependencies:
-      '@altano/repository-tools': 0.1.1
+      '@altano/repository-tools': 1.0.1
       detect-indent: 7.0.1
-      detect-newline: 3.1.0
+      detect-newline: 4.0.1
       eslint: 9.28.0(jiti@2.4.2)
       eslint-fix-utils: 0.2.1(@types/estree@1.0.6)(eslint@9.28.0(jiti@2.4.2))
       jsonc-eslint-parser: 2.4.0
