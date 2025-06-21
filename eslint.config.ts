@@ -1,6 +1,6 @@
 import type { Linter } from 'eslint';
 
-// @ts-expect-error Currently does not include a type-declaration file
+// @ts-expect-error Currently does not include type declarations
 import comments from '@eslint-community/eslint-plugin-eslint-comments/configs';
 import js from '@eslint/js';
 import markdown from '@eslint/markdown';
@@ -17,10 +17,10 @@ import moduleInterop from 'eslint-plugin-module-interop';
 import nodePlugin from 'eslint-plugin-n';
 import packageJson from 'eslint-plugin-package-json';
 import perfectionist from 'eslint-plugin-perfectionist';
-// @ts-expect-error Currently does not include a type-declaration file
+// @ts-expect-error Currently does not include type declarations
 import pluginPromise from 'eslint-plugin-promise';
 import regexpPlugin from 'eslint-plugin-regexp';
-// @ts-expect-error Currently does not include a type-declaration file
+// @ts-expect-error Currently does not include type declarations
 import pluginSecurity from 'eslint-plugin-security';
 import sonarjs from 'eslint-plugin-sonarjs';
 import eslintPluginUnicorn from 'eslint-plugin-unicorn';
@@ -37,10 +37,10 @@ export default typegen(
   defineConfig([
     gitignore(),
     globalIgnores([
-      /* Auto-generated files/directories that are not included in .gitignore */
+      // Auto-generated files/directories that are not included in .gitignore
       'pnpm-lock.yaml',
 
-      /* Dot files/directories which should NOT be ignored */
+      // Dot files/directories which should NOT be ignored
       '!.dependency-cruiser.js',
       '!.vscode',
     ]),
@@ -77,11 +77,11 @@ export default typegen(
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- No type declaration
     comments.recommended as Linter.Config,
     {
+      // @ts-expect-error The built-in types for `eslint-plugin-jsonc` configs are currently incompatible
+      // with the official ESLint `Linter.Config` type.
       extends: [
-        // @ts-expect-error Config type is currently incompatible with official eslint `Linter.Config` type
-        eslintPluginJsonc.configs['flat/recommended-with-jsonc'],
-        // @ts-expect-error Config type is currently incompatible with official eslint `Linter.Config` type
-        eslintPluginJsonc.configs['flat/prettier'],
+        ...eslintPluginJsonc.configs['flat/recommended-with-jsonc'],
+        ...eslintPluginJsonc.configs['flat/prettier'],
       ],
       name: eslintPluginJsonc.meta.name,
     },
@@ -93,7 +93,7 @@ export default typegen(
       },
     },
     {
-      extends: [eslintPluginJsonSchemaValidator.configs['flat/recommended']],
+      extends: eslintPluginJsonSchemaValidator.configs['flat/recommended'],
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- For some reason `eslintPluginJsonSchemaValidator.meta` is seen as `any` by TypeScript
       name: eslintPluginJsonSchemaValidator.meta.name,
     },
@@ -104,15 +104,16 @@ export default typegen(
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- No type declaration
     pluginPromise.configs['flat/recommended'] as Linter.Config,
     {
-      extends: [perfectionist.configs['recommended-natural']],
-      name: perfectionist.meta.name,
+      // Temporary name until the plugin is updated to include names in its exported configs
+      name: `${perfectionist.meta.name}/recommended-natural`,
+      ...perfectionist.configs['recommended-natural'],
     },
     {
+      // @ts-expect-error The built-in types for `eslint-plugin-yml` configs are currently incompatible
+      // with the official ESLint `Linter.Config` type.
       extends: [
-        // @ts-expect-error Config type is currently incompatible with official eslint `Linter.Config` type
-        eslintPluginYml.configs['flat/recommended'],
-        // @ts-expect-error Config type is currently incompatible with official eslint `Linter.Config` type
-        eslintPluginYml.configs['flat/prettier'],
+        ...eslintPluginYml.configs['flat/recommended'],
+        ...eslintPluginYml.configs['flat/prettier'],
       ],
       name: eslintPluginYml.meta.name,
     },
@@ -123,20 +124,24 @@ export default typegen(
     eslintPluginUnicorn.configs.recommended,
     sonarjs.configs.recommended,
     {
-      ...regexpPlugin.configs['flat/recommended'],
+      // Temporary name until the plugin is updated to include names in its exported configs
       name: 'eslint-plugin-regexp/flat/recommended',
+      ...regexpPlugin.configs['flat/recommended'],
     },
     {
-      ...deMorgan.configs.recommended,
+      // Temporary name until the plugin is updated to include names in its exported configs
       name: `${deMorgan.meta.name}/recommended`,
+      ...deMorgan.configs.recommended,
     },
     {
-      ...eslintPluginMath.configs.recommended,
+      // Temporary name until the plugin is updated to include names in its exported configs
       name: `${eslintPluginMath.meta.name}/recommended`,
+      ...eslintPluginMath.configs.recommended,
     },
     {
-      ...moduleInterop.configs.recommended,
+      // Temporary name until the plugin is updated to include names in its exported configs
       name: `${moduleInterop.meta.name}/recommended`,
+      ...moduleInterop.configs.recommended,
     },
     packageJson.configs.recommended,
     eslintConfigPrettier,
