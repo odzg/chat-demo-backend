@@ -29,7 +29,7 @@
     "fastify": "5.4.0",
     "fastify-plugin": "5.0.1",
     "fastify-type-provider-zod": "5.0.1",
-    "zod": "3.25.67"
+    "zod": "3.25.69"
   },
   "devDependencies": {
     "@commitlint/cli": "19.8.1",
