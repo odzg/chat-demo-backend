@@ -5,7 +5,6 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.detectIndentation": false,
   "editor.formatOnSave": true,
-  "editor.insertSpaces": true,
   "editor.tabSize": 2,
   "eslint.codeActionsOnSave.rules": [
     "@typescript-eslint/consistent-type-imports",
@@ -27,9 +26,11 @@
   "files.eol": "\n",
   "files.insertFinalNewline": true,
   "javascript.format.enable": false,
+  "javascript.preferences.importModuleSpecifierEnding": "js",
   "javascript.preferences.quoteStyle": "single",
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "typescript.format.enable": false,
+  "typescript.preferences.importModuleSpecifierEnding": "js",
   "typescript.preferences.preferTypeOnlyAutoImports": true,
   "typescript.preferences.quoteStyle": "single",
   "typescript.tsdk": "./node_modules/typescript/lib"
