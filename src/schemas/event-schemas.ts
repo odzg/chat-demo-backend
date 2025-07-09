@@ -1,4 +1,4 @@
-import { z, type ZodType } from 'zod/v4';
+import { z, type ZodType } from 'zod';
 
 import { EventType } from '#enums/event-type.ts';
 
