@@ -1,0 +1,170 @@
+name: Sync pnpm lockfile
+
+# Automatically sync pnpm-lock.yaml when package.json changes
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+      - 'pnpm-workspace.yaml' # Include workspace config changes
+
+  # Allow manual triggering
+  workflow_dispatch:
+    inputs:
+      force_update:
+        description: 'Force update even if no changes detected'
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  sync-lockfile:
+    runs-on: ubuntu-latest
+
+    # Skip if PR is from a fork (security consideration)
+    if: github.event.pull_request.head.repo.full_name == github.repository
+
+    steps:
+      - name: Checkout PR branch
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          ref: ${{ github.head_ref }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 1
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@a7487c7e89a18df4991f7f222e4898a00d66ddda # v4.1.0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version-file: 'package.json'
+          cache: 'pnpm'
+
+      - name: Get pnpm version
+        id: pnpm-version
+        run: echo "version=$(pnpm --version)" >> $GITHUB_OUTPUT
+
+      - name: Create backup of current lockfile
+        run: |
+          if [ -f pnpm-lock.yaml ]; then
+            cp pnpm-lock.yaml pnpm-lock.yaml.backup
+            echo "📋 Backed up existing pnpm-lock.yaml"
+          else
+            echo "📋 No existing pnpm-lock.yaml found"
+          fi
+
+      - name: Regenerate lockfile
+        run: |
+          echo "🔄 Regenerating pnpm-lock.yaml with pnpm v${{ steps.pnpm-version.outputs.version }}"
+
+          # Clear any existing cache to ensure clean state
+          pnpm store prune
+
+          # Generate fresh lockfile
+          pnpm install --lockfile-only --frozen-lockfile=false
+
+          echo "✅ Lockfile regeneration complete"
+
+      - name: Analyze lockfile changes
+        id: analyze-changes
+        run: |
+          if [ ! -f pnpm-lock.yaml ]; then
+            echo "❌ pnpm-lock.yaml was not generated"
+            exit 1
+          fi
+
+          # Check if lockfile changed
+          if git diff --exit-code pnpm-lock.yaml >/dev/null 2>&1; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "✅ pnpm-lock.yaml is already synchronized"
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "🔄 pnpm-lock.yaml needs synchronization"
+            
+            # Show detailed changes
+            echo "📊 Lockfile statistics:"
+            if [ -f pnpm-lock.yaml.backup ]; then
+              git diff --stat pnpm-lock.yaml.backup pnpm-lock.yaml || true
+            fi
+            
+            # Show a summary of package changes
+            echo "📦 Package changes summary:"
+            git diff --name-only | grep -E "(package\.json|pnpm-lock\.yaml)" || echo "No package files changed"
+          fi
+
+      - name: Commit synchronized lockfile
+        if: steps.analyze-changes.outputs.changed == 'true' || github.event.inputs.force_update == 'true'
+        run: |
+          echo "💾 Committing synchronized pnpm-lock.yaml"
+
+          # Configure git identity
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # Stage and commit changes
+          git add pnpm-lock.yaml
+
+          # Create detailed commit message
+          git commit -m "chore: sync pnpm-lock.yaml
+
+          - Synchronized with package.json dependencies
+          - Generated with pnpm v${{ steps.pnpm-version.outputs.version }}
+          - Auto-updated by sync-lockfile workflow"
+
+          # Push changes
+          git push origin ${{ github.head_ref }}
+
+          echo "✅ Changes committed and pushed successfully"
+
+      - name: Add PR comment
+        if: steps.analyze-changes.outputs.changed == 'true' && github.event_name == 'pull_request'
+        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const { number } = context.issue;
+
+            await github.rest.issues.createComment({
+              owner,
+              repo,
+              issue_number: number,
+              body: `## 🔄 Lockfile Synchronized
+
+              The \`pnpm-lock.yaml\` has been automatically synchronized with your \`package.json\` changes.
+
+              ### What happened:
+              - Dependencies were analyzed and lockfile was regenerated
+              - Changes committed to this PR branch
+              - Using pnpm v${{ steps.pnpm-version.outputs.version }}
+
+              ### Why this happened:
+              - Package dependencies were modified in \`package.json\`
+              - Lockfile was out of sync or missing
+              - Ensures consistent dependency resolution
+
+              The changes are ready for review alongside your other modifications.`
+            });
+
+      - name: Summary
+        run: |
+          echo "## Workflow Summary" >> $GITHUB_STEP_SUMMARY
+          echo "- **pnpm version**: ${{ steps.pnpm-version.outputs.version }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Lockfile changed**: ${{ steps.analyze-changes.outputs.changed }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Action taken**: ${{ steps.analyze-changes.outputs.changed == 'true' && 'Committed synchronized lockfile' || 'No changes needed' }}" >> $GITHUB_STEP_SUMMARY
+
+      - name: Cleanup
+        if: always()
+        run: |
+          # Clean up backup file
+          rm -f pnpm-lock.yaml.backup
+          echo "🧹 Cleanup completed"
