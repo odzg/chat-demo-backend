@@ -21,7 +21,14 @@
       "severity": "warn"
     }
   ],
-  "eslint.validate": ["javascript", "javascriptreact", "json", "jsonc", "yaml"],
+  "eslint.validate": [
+    "github-actions-workflow",
+    "javascript",
+    "javascriptreact",
+    "json",
+    "jsonc",
+    "yaml"
+  ],
   "files.encoding": "utf8",
   "files.eol": "\n",
   "files.insertFinalNewline": true,
