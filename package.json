@@ -64,7 +64,7 @@
     "eslint-plugin-unicorn": "59.0.1",
     "eslint-plugin-yml": "1.18.0",
     "eslint-typegen": "2.2.1",
-    "knip": "5.61.3",
+    "knip": "5.62.0",
     "lefthook": "1.12.2",
     "prettier": "3.6.2",
     "syncpack": "13.0.4",
