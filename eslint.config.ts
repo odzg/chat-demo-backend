@@ -6,7 +6,6 @@ import js from '@eslint/js';
 import markdown from '@eslint/markdown';
 import gitignore from 'eslint-config-flat-gitignore';
 import eslintConfigPrettier from 'eslint-config-prettier/flat';
-import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
 import deMorgan from 'eslint-plugin-de-morgan';
 import eslintPluginImportX from 'eslint-plugin-import-x';
 import jsdoc from 'eslint-plugin-jsdoc';
@@ -166,9 +165,6 @@ export default typegen(
           'error',
           { ignore: [/env/i, /props$/i, /params$/i] },
         ],
-      },
-      settings: {
-        'import-x/resolver-next': createTypeScriptImportResolver(),
       },
     },
     {
