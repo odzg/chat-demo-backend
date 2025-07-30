@@ -22,7 +22,7 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@date-fns/utc": "2.1.0",
+    "@date-fns/utc": "2.1.1",
     "@fastify/cors": "11.0.1",
     "@fastify/jwt": "9.1.0",
     "@fastify/websocket": "11.2.0",
