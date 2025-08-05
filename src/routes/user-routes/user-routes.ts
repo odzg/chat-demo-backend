@@ -34,7 +34,7 @@ export const userRoutes: FastifyPluginAsyncZod = (fastify) => {
       await request.jwtVerify();
 
       const doesAuthenticatedUserExist = database.users.some(
-        ({ deletedAt, id }) => !deletedAt && id === Number(request.user.id),
+        ({ deletedAt, id }) => !deletedAt && id === request.user.id,
       );
 
       if (!doesAuthenticatedUserExist) {

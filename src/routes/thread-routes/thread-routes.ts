@@ -52,7 +52,7 @@ export const threadRoutes: FastifyPluginAsyncZod = (fastify) => {
       await request.jwtVerify();
 
       const doesAuthenticatedUserExist = database.users.some(
-        ({ deletedAt, id }) => !deletedAt && id === Number(request.user.id),
+        ({ deletedAt, id }) => !deletedAt && id === request.user.id,
       );
 
       if (!doesAuthenticatedUserExist) {
@@ -77,7 +77,7 @@ export const threadRoutes: FastifyPluginAsyncZod = (fastify) => {
     },
     async (request, reply) => {
       const user = database.users.find(
-        ({ deletedAt, id }) => !deletedAt && id === Number(request.user.id),
+        ({ deletedAt, id }) => !deletedAt && id === request.user.id,
       );
 
       if (!user) {
