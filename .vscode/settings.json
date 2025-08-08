@@ -24,9 +24,9 @@
   "eslint.validate": [
     "github-actions-workflow",
     "javascript",
-    "javascriptreact",
     "json",
     "jsonc",
+    "typescript",
     "yaml"
   ],
   "files.encoding": "utf8",
