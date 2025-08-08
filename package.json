@@ -3,7 +3,7 @@
   "name": "chat-demo-backend",
   "version": "0.0.0",
   "private": true,
-  "description": "",
+  "description": "Backend for the chat demo application",
   "type": "module",
   "imports": {
     "#*": "./src/*"
