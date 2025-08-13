@@ -103,8 +103,8 @@ importers:
         specifier: 17.21.3
         version: 17.21.3(eslint@9.33.0(jiti@2.4.2))(typescript@5.9.2)
       eslint-plugin-package-json:
-        specifier: 0.52.1
-        version: 0.52.1(@types/estree@1.0.8)(eslint@9.33.0(jiti@2.4.2))(jsonc-eslint-parser@2.4.0)
+        specifier: 0.53.0
+        version: 0.53.0(@types/estree@1.0.8)(eslint@9.33.0(jiti@2.4.2))(jsonc-eslint-parser@2.4.0)
       eslint-plugin-perfectionist:
         specifier: 4.15.0
         version: 4.15.0(eslint@9.33.0(jiti@2.4.2))(typescript@5.9.2)
@@ -1698,8 +1698,8 @@ packages:
     peerDependencies:
       eslint: '>=8.23.0'
 
-  eslint-plugin-package-json@0.52.1:
-    resolution: {integrity: sha512-tj9bpYCcCD2ciVSGf+Ky48NROC19Nlwv43AmLw5A+aVfjbupNJyLb/qdCKMPIsLk1+uCxDoV3yMb5ARRESU6ng==}
+  eslint-plugin-package-json@0.53.0:
+    resolution: {integrity: sha512-T92/gKZ/XbkcF9xx+SEeQss2Hz5ggs/7XxKQRd10kJ5TMq0Gu1JKtJ3h2wIaKOJXiDS8RvgGqx1j7UyhXqIaJQ==}
     engines: {node: ^=20.19.0 || >=22.12.0}
     peerDependencies:
       eslint: '>=8.0.0'
@@ -3357,10 +3357,6 @@ packages:
 
   validate-npm-package-license@3.0.4:
     resolution: {integrity: sha512-DpKm2Ui/xN7/HQKCtpZxoRWBhZ9Z0kqtygG8XCgNQ8ZlDnxuQmWhj566j8fN4Cu3/JmbhsDo7fcAJq4s9h27Ew==}
-
-  validate-npm-package-name@6.0.0:
-    resolution: {integrity: sha512-d7KLgL1LD3U3fgnvWEY1cQXoO/q6EQ1BSz48Sa149V/5zVTAbgmZIpyI8TRi6U9/JNyeYLlTKsEMPtLC27RFUg==}
-    engines: {node: ^18.17.0 || >=20.5.0}
 
   validate-npm-package-name@6.0.2:
     resolution: {integrity: sha512-IUoow1YUtvoBBC06dXs8bR8B9vuA3aJfmQNKMoaPG/OFsPmoQvw8xh+6Ye25Gx9DQhoEom3Pcu9MKHerm/NpUQ==}
@@ -5218,7 +5214,7 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
-  eslint-plugin-package-json@0.52.1(@types/estree@1.0.8)(eslint@9.33.0(jiti@2.4.2))(jsonc-eslint-parser@2.4.0):
+  eslint-plugin-package-json@0.53.0(@types/estree@1.0.8)(eslint@9.33.0(jiti@2.4.2))(jsonc-eslint-parser@2.4.0):
     dependencies:
       '@altano/repository-tools': 2.0.1
       change-case: 5.4.4
@@ -6445,7 +6441,7 @@ snapshots:
       hosted-git-info: 8.0.2
       proc-log: 5.0.0
       semver: 7.7.2
-      validate-npm-package-name: 6.0.0
+      validate-npm-package-name: 6.0.2
 
   object-inspect@1.13.4: {}
 
@@ -7223,8 +7219,6 @@ snapshots:
     dependencies:
       spdx-correct: 3.2.0
       spdx-expression-parse: 3.0.1
-
-  validate-npm-package-name@6.0.0: {}
 
   validate-npm-package-name@6.0.2: {}
 
