@@ -44,9 +44,7 @@ export default typegen(
     },
     {
       extends: [
-        // @ts-expect-error Config type is currently incompatible with official eslint `Linter.Config` type
         tseslint.configs.strictTypeChecked,
-        // @ts-expect-error Config type is currently incompatible with official eslint `Linter.Config` type
         tseslint.configs.stylisticTypeChecked,
       ],
       files: [GLOB_JS, GLOB_TS],
@@ -56,7 +54,7 @@ export default typegen(
           tsconfigRootDir: import.meta.dirname,
         },
       },
-      name: tseslint.plugin.meta?.name,
+      name: tseslint.plugin.meta.name,
     },
     {
       ...jsdoc.configs['flat/recommended-typescript-error'],
