@@ -114,9 +114,6 @@ importers:
       eslint-plugin-regexp:
         specifier: 2.10.0
         version: 2.10.0(eslint@9.33.0(jiti@2.5.1))
-      eslint-plugin-security:
-        specifier: 3.0.1
-        version: 3.0.1
       eslint-plugin-sonarjs:
         specifier: 3.0.4
         version: 3.0.4(eslint@9.33.0(jiti@2.5.1))
@@ -1767,10 +1764,6 @@ packages:
     engines: {node: ^18 || >=20}
     peerDependencies:
       eslint: '>=8.44.0'
-
-  eslint-plugin-security@3.0.1:
-    resolution: {integrity: sha512-XjVGBhtDZJfyuhIxnQ/WMm385RbX3DBu7H1J7HNNhmB2tnGxMeqVSnYv79oAj992ayvIBZghsymwkYFS6cGH4Q==}
-    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
   eslint-plugin-sonarjs@3.0.4:
     resolution: {integrity: sha512-ftQcP811kRJNXapqpQXHErEoVOdTPfYPPYd7n3AExIPwv4qWKKHf4slFvXmodiOnfgy1Tl3waPZZLD7lcvJOtw==}
@@ -5356,10 +5349,6 @@ snapshots:
       refa: 0.12.1
       regexp-ast-analysis: 0.7.1
       scslre: 0.3.0
-
-  eslint-plugin-security@3.0.1:
-    dependencies:
-      safe-regex: 2.1.1
 
   eslint-plugin-sonarjs@3.0.4(eslint@9.33.0(jiti@2.5.1)):
     dependencies:

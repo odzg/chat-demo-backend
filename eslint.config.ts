@@ -19,8 +19,6 @@ import perfectionist from 'eslint-plugin-perfectionist';
 // @ts-expect-error Currently does not include type declarations
 import pluginPromise from 'eslint-plugin-promise';
 import regexpPlugin from 'eslint-plugin-regexp';
-// @ts-expect-error Currently does not include type declarations
-import pluginSecurity from 'eslint-plugin-security';
 import sonarjs from 'eslint-plugin-sonarjs';
 import eslintPluginUnicorn from 'eslint-plugin-unicorn';
 import eslintPluginYml from 'eslint-plugin-yml';
@@ -94,8 +92,6 @@ export default typegen(
     markdown.configs.recommended,
     nodePlugin.configs['flat/recommended'],
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- No type declaration
-    pluginSecurity.configs.recommended as Linter.Config,
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- No type declaration
     pluginPromise.configs['flat/recommended'] as Linter.Config,
     {
       // Temporary name until the plugin is updated to include names in its exported configs
@@ -157,7 +153,6 @@ export default typegen(
         'jsdoc/require-jsdoc': 'off', // Too restrictive
         'n/no-missing-import': 'off', // This is already enforced either by TypeScript or by `import-x/no-unresolved`
         'perfectionist/sort-imports': ['error', { tsconfigRootDir: '.' }],
-        'security/detect-object-injection': 'off', // Too restrictive
         'unicorn/no-null': 'off', // Too restrictive
         'unicorn/prevent-abbreviations': [
           'error',
