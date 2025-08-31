@@ -41,7 +41,7 @@
     "@eslint/markdown": "7.2.0",
     "@types/node": "22.18.0",
     "@types/ws": "8.18.1",
-    "cspell": "9.2.0",
+    "cspell": "9.2.1",
     "dependency-cruiser": "17.0.1",
     "eslint": "9.34.0",
     "eslint-config-flat-gitignore": "2.1.0",
