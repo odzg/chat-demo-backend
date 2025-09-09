@@ -14,7 +14,8 @@ const fastify = Fastify({ logger: true });
 
 fastify.setValidatorCompiler(validatorCompiler);
 /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument --
-type issue will be resolved when the following PR is merged: https://github.com/turkerdev/fastify-type-provider-zod/pull/172 */
+Currently awaiting the following PR to be merged: https://github.com/turkerdev/fastify-type-provider-zod/pull/172,
+in order to resolve the related reported issue: https://github.com/turkerdev/fastify-type-provider-zod/issues/171. */
 fastify.setSerializerCompiler(serializerCompiler);
 
 await fastify.register(fastifyCors);
