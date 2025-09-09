@@ -8,7 +8,7 @@ import gitignore from 'eslint-config-flat-gitignore';
 import eslintConfigPrettier from 'eslint-config-prettier/flat';
 import deMorgan from 'eslint-plugin-de-morgan';
 import eslintPluginImportX from 'eslint-plugin-import-x';
-import jsdoc from 'eslint-plugin-jsdoc';
+import { jsdoc } from 'eslint-plugin-jsdoc';
 import eslintPluginJsonSchemaValidator from 'eslint-plugin-json-schema-validator';
 import eslintPluginJsonc from 'eslint-plugin-jsonc';
 import eslintPluginMath from 'eslint-plugin-math';
@@ -55,11 +55,11 @@ export default typegen(
       name: tseslint.plugin.meta.name,
     },
     {
-      ...jsdoc.configs['flat/recommended-typescript-error'],
+      ...jsdoc({ config: 'flat/recommended-typescript-error' }),
       files: [GLOB_TS],
     },
     {
-      ...jsdoc.configs['flat/recommended-typescript-flavor-error'],
+      ...jsdoc({ config: 'flat/recommended-typescript-flavor-error' }),
       files: [GLOB_JS],
     },
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- No type declaration
