@@ -54,14 +54,14 @@ export default typegen(
       },
       name: tseslint.plugin.meta.name,
     },
-    {
-      ...jsdoc({ config: 'flat/recommended-typescript-error' }),
+    jsdoc({
+      config: 'flat/recommended-typescript-error',
       files: [GLOB_TS],
-    },
-    {
-      ...jsdoc({ config: 'flat/recommended-typescript-flavor-error' }),
+    }),
+    jsdoc({
+      config: 'flat/recommended-typescript-flavor-error',
       files: [GLOB_JS],
-    },
+    }),
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- No type declaration
     comments.recommended as Linter.Config,
     {
