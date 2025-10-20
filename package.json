@@ -64,7 +64,7 @@
     "eslint-plugin-yml": "1.19.0",
     "eslint-typegen": "2.3.0",
     "knip": "5.66.2",
-    "lefthook": "1.13.6",
+    "lefthook": "2.0.0",
     "prettier": "3.6.2",
     "syncpack": "13.0.4",
     "type-fest": "5.1.0",
