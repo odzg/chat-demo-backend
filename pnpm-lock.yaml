@@ -64,8 +64,8 @@ importers:
         specifier: 9.2.1
         version: 9.2.1
       dependency-cruiser:
-        specifier: 17.0.2
-        version: 17.0.2
+        specifier: 17.1.0
+        version: 17.1.0
       eslint:
         specifier: 9.38.0
         version: 9.38.0(jiti@2.6.0)
@@ -1444,8 +1444,8 @@ packages:
   defaults@1.0.4:
     resolution: {integrity: sha512-eFuaLoy/Rxalv2kr+lqMlUnrDWV+3j4pljOIJgLIhI058IQfWJ7vXhyEIHu+HtC738klGALYxOKDO0bQP3tg8A==}
 
-  dependency-cruiser@17.0.2:
-    resolution: {integrity: sha512-Aryg/E8ostay8B7OBPqrxcxeGSgtPRKosP6do3L3TiPg4dAvIJFl2EFuG/mO8JAZv70pBTveKvKxhABPyNduvg==}
+  dependency-cruiser@17.1.0:
+    resolution: {integrity: sha512-8ZtJmSEqG5xAFAMYBclJbvp3R8j4wBw2QTzT0ZhC2cou6c/3u0G6j7coNc/fz0qyo0haQ5ihLt7u0iEnRMui/A==}
     engines: {node: ^20.12||^22||>=24}
     hasBin: true
 
@@ -4566,7 +4566,7 @@ snapshots:
     dependencies:
       clone: 1.0.4
 
-  dependency-cruiser@17.0.2:
+  dependency-cruiser@17.1.0:
     dependencies:
       acorn: 8.15.0
       acorn-jsx: 5.3.2(acorn@8.15.0)
@@ -4585,7 +4585,7 @@ snapshots:
       prompts: 2.4.2
       rechoir: 0.8.0
       safe-regex: 2.1.1
-      semver: 7.7.2
+      semver: 7.7.3
       tsconfig-paths-webpack-plugin: 4.2.0
       watskeburt: 4.2.3
 
