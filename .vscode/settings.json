@@ -23,6 +23,7 @@
   ],
   "eslint.validate": [
     "github-actions-workflow",
+    "instructions",
     "javascript",
     "json",
     "jsonc",

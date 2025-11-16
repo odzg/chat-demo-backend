@@ -27,8 +27,10 @@ import { defineConfig, globalIgnores } from 'eslint/config';
 import tseslint from 'typescript-eslint';
 
 const GLOB_JS = '**/*.?([cm])js';
+const GLOB_JSON = '**/*.json?(c)';
 const GLOB_PACKAGE_JSON = '**/package.json';
 const GLOB_TS = '**/*.?([cm])ts';
+const GLOB_YML = '**/*.y?(a)ml';
 
 export default typegen(
   defineConfig(
@@ -71,11 +73,11 @@ export default typegen(
         ...eslintPluginJsonc.configs['flat/recommended-with-jsonc'],
         ...eslintPluginJsonc.configs['flat/prettier'],
       ],
-
-      // Temporary name until the plugin is updated to include names in its exported configs
+      files: [GLOB_JSON],
       name: eslintPluginJsonc.meta.name,
     },
     {
+      files: [GLOB_JSON],
       ignores: [GLOB_PACKAGE_JSON],
       name: `${eslintPluginJsonc.meta.name}/sort-keys-except-package-json`,
       rules: {
@@ -84,52 +86,76 @@ export default typegen(
     },
     {
       extends: eslintPluginJsonSchemaValidator.configs['flat/recommended'],
+      files: [GLOB_JSON, GLOB_YML],
 
-      // Temporary name until the plugin is updated to include names in its exported configs
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- For some reason `eslintPluginJsonSchemaValidator.meta` is seen as `any` by TypeScript
       name: eslintPluginJsonSchemaValidator.meta.name,
     },
     markdown.configs.recommended,
-    nodePlugin.configs['flat/recommended'],
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- No type declaration
-    pluginPromise.configs['flat/recommended'] as Linter.Config,
+    {
+      ...nodePlugin.configs['flat/recommended'],
+      files: [GLOB_JS, GLOB_TS],
+    },
+    {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- No type declaration
+      ...(pluginPromise.configs['flat/recommended'] as Linter.Config),
+      files: [GLOB_JS, GLOB_TS],
+    },
     {
       // Temporary name until the plugin is updated to include names in its exported configs
       name: `${perfectionist.meta.name}/recommended-natural`,
       ...perfectionist.configs['recommended-natural'],
+      files: [GLOB_JS, GLOB_TS],
     },
     {
       extends: [
         ...eslintPluginYml.configs['flat/recommended'],
         ...eslintPluginYml.configs['flat/prettier'],
       ],
+      files: [GLOB_YML],
 
       // Temporary name until the plugin is updated to include names in its exported configs
       name: eslintPluginYml.meta.name,
     },
-    eslintPluginImportX.flatConfigs.recommended,
-    eslintPluginImportX.flatConfigs.typescript,
-    eslintPluginUnicorn.configs.recommended,
-    sonarjs.configs.recommended,
+    {
+      ...eslintPluginImportX.flatConfigs.recommended,
+      files: [GLOB_JS, GLOB_TS],
+    },
+    {
+      ...eslintPluginImportX.flatConfigs.typescript,
+      files: [GLOB_JS, GLOB_TS],
+    },
+    {
+      ...eslintPluginUnicorn.configs.recommended,
+      files: [GLOB_JS, GLOB_TS],
+    },
+    {
+      ...sonarjs.configs.recommended,
+      files: [GLOB_JS, GLOB_TS],
+    },
     {
       // Temporary name until the plugin is updated to include names in its exported configs
       name: 'eslint-plugin-regexp/flat/recommended',
       ...regexpPlugin.configs['flat/recommended'],
+      files: [GLOB_JS, GLOB_TS],
     },
     {
       // Temporary name until the plugin is updated to include names in its exported configs
       name: `${deMorgan.meta.name}/recommended`,
       ...deMorgan.configs.recommended,
+      files: [GLOB_JS, GLOB_TS],
     },
     {
       // Temporary name until the plugin is updated to include names in its exported configs
       name: `${eslintPluginMath.meta.name}/recommended`,
       ...eslintPluginMath.configs.recommended,
+      files: [GLOB_JS, GLOB_TS],
     },
     {
       // Temporary name until the plugin is updated to include names in its exported configs
       name: `${moduleInterop.meta.name}/recommended`,
       ...moduleInterop.configs.recommended,
+      files: [GLOB_JS, GLOB_TS],
     },
     packageJson.configs.recommended,
     eslintConfigPrettier,
@@ -140,25 +166,11 @@ export default typegen(
       name: 'base-config',
       rules: {
         '@eslint-community/eslint-comments/require-description': 'error',
-        'import-x/default': 'off', // TypeScript already enforces this
-        'import-x/named': 'off', // TypeScript already enforces this
-        'import-x/namespace': 'off', // TypeScript already enforces this
-        'import-x/newline-after-import': 'error',
-        'import-x/no-duplicates': ['error', { 'prefer-inline': true }],
-        'import-x/no-named-as-default-member': 'off', // TypeScript already enforces this
-        'jsdoc/require-jsdoc': 'off', // Too restrictive
-        'n/no-missing-import': 'off', // This is already enforced either by TypeScript or by `import-x/no-unresolved`
-        'perfectionist/sort-imports': ['error', { tsconfigRootDir: '.' }],
-        'unicorn/no-null': 'off', // Too restrictive
-        'unicorn/prevent-abbreviations': [
-          'error',
-          { ignore: [/env/i, /props$/i, /params$/i] },
-        ],
       },
     },
     {
       files: [GLOB_JS, GLOB_TS],
-      name: 'js-and-ts-files-only',
+      name: 'js-and-ts-files-config',
       rules: {
         '@typescript-eslint/array-type': ['error', { default: 'generic' }],
         '@typescript-eslint/consistent-type-imports': [
@@ -175,6 +187,20 @@ export default typegen(
           { argsIgnorePattern: '^_' },
         ],
         '@typescript-eslint/prefer-nullish-coalescing': 'off',
+        'import-x/default': 'off', // TypeScript already enforces this
+        'import-x/named': 'off', // TypeScript already enforces this
+        'import-x/namespace': 'off', // TypeScript already enforces this
+        'import-x/newline-after-import': 'error',
+        'import-x/no-duplicates': ['error', { 'prefer-inline': true }],
+        'import-x/no-named-as-default-member': 'off', // TypeScript already enforces this
+        'jsdoc/require-jsdoc': 'off', // Too restrictive
+        'n/no-missing-import': 'off', // This is already enforced either by TypeScript or by `import-x/no-unresolved`
+        'perfectionist/sort-imports': ['error', { tsconfigRootDir: '.' }],
+        'unicorn/no-null': 'off', // Too restrictive
+        'unicorn/prevent-abbreviations': [
+          'error',
+          { ignore: [/env/i, /props$/i, /params$/i] },
+        ],
       },
     },
   ),
