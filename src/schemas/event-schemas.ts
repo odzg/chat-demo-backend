@@ -16,13 +16,15 @@ export const UpdateThreadUserEventSchema = z.object({
   type: z.literal(EventType.UPDATE_THREAD_USER),
 }) satisfies ZodType<BaseEventSchema>;
 
-export interface UpdateThreadUserEventSchema
-  extends z.infer<typeof UpdateThreadUserEventSchema> {}
+export interface UpdateThreadUserEventSchema extends z.infer<
+  typeof UpdateThreadUserEventSchema
+> {}
 
 export const CreateThreadMessageSchema = z.object({
   payload: ThreadMessage,
   type: z.literal(EventType.CREATE_THREAD_MESSAGE),
 }) satisfies ZodType<BaseEventSchema>;
 
-export interface CreateThreadMessageSchema
-  extends z.infer<typeof CreateThreadMessageSchema> {}
+export interface CreateThreadMessageSchema extends z.infer<
+  typeof CreateThreadMessageSchema
+> {}
