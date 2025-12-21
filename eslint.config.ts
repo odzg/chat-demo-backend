@@ -195,7 +195,14 @@ export default typegen(
         'import-x/no-named-as-default-member': 'off', // TypeScript already enforces this
         'jsdoc/require-jsdoc': 'off', // Too restrictive
         'n/no-missing-import': 'off', // This is already enforced either by TypeScript or by `import-x/no-unresolved`
-        'perfectionist/sort-imports': ['error', { tsconfigRootDir: '.' }],
+        'perfectionist/sort-imports': [
+          'error',
+          {
+            tsconfig: {
+              rootDir: '.',
+            },
+          },
+        ],
         'unicorn/no-null': 'off', // Too restrictive
         'unicorn/prevent-abbreviations': [
           'error',
