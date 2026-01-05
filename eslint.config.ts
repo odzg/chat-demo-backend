@@ -104,7 +104,7 @@ export default typegen(
     },
     {
       // Temporary name until the plugin is updated to include names in its exported configs
-      name: `${perfectionist.meta.name}/recommended-natural`,
+      name: `${perfectionist.meta?.name ?? ''}/recommended-natural`,
       ...perfectionist.configs['recommended-natural'],
       files: [GLOB_JS, GLOB_TS],
     },
